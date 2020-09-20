@@ -1,0 +1,13 @@
+.contactsListItem {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+.contactsListItem:hover {
+  background-color: #d3d3d3;
+}
+.contactsListItem > p {
+  margin-left: 10px;
+  font-size: 16px;
+}

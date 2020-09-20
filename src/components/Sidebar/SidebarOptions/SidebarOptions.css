@@ -8,9 +8,9 @@
   background-color: #d3d3d3;
 }
 .sidebarOptions__icon {
-  margin: 10px 20px;
+  margin: 10px 15px 10px 10px;
 }
-..sidebarOptions > h5 {
+.sidebarOptions > h5 {
   font-size: 18px;
   font-weight: 200;
 }
