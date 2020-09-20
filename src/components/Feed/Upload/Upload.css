@@ -1,0 +1,57 @@
+.upload {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.upload__top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+.upload__top > input {
+  margin-left: 10px;
+  flex: 1;
+  height: 40px;
+  border-radius: 99px;
+  outline: none;
+  border: none;
+  background-color: #ebeaea;
+  transition: background-color 0.2s ease-in;
+  padding: 0 10px;
+}
+.upload__top > input:hover {
+  background-color: #d3d3d3;
+}
+.upload__top > input::placeholder {
+  font-size: 16px;
+}
+.upload__bottom {
+  margin-top: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.upload__bottomItem {
+  display: flex;
+  align-items: center;
+}
+.upload__bottomLiveVideo {
+  font-size: 30px !important;
+  margin-right: 5px;
+  color: red;
+}
+.upload__bottomPhotoVideo {
+  font-size: 30px !important;
+  margin-right: 5px;
+  color: lightgreen;
+}
+.upload__bottomFeeling {
+  font-size: 30px !important;
+  margin-right: 5px;
+  color: orange;
+}

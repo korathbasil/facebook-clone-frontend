@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
-import MainBody from "../MainBody/MainBody";
+import Feed from "../Feed/Feed";
 import ContactsList from "../ContactsList/ContactsList";
 
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
       <Header />
       <div className="home__body">
         <Sidebar />
-        <MainBody />
+        <Feed />
         <ContactsList />
       </div>
     </div>
