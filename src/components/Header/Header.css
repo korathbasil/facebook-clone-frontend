@@ -1,0 +1,73 @@
+.header {
+  width: 100%;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.header__left {
+  display: flex;
+  align-items: center;
+}
+.header__leftLogo {
+  width: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.header__leftSearch {
+  height: 40px;
+  background-color: #ebeaea;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+.header__leftSearchIcon {
+  color: grey;
+}
+.header__leftSearchInput {
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: #ebeaea;
+}
+.header__leftSearchInput::placeholder {
+  color: grey;
+  font-size: 16px;
+}
+.header__center {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.header__centerIconContainer {
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+.header__centerIcon {
+  font-size: 30px !important;
+  color: grey;
+}
+.header__centerIconContainer:hover {
+  background-color: #ebeaea;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+}
+.header__rightAccount {
+  padding: 3px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+}
+.header__rightAccount > h4 {
+  margin: 0 5px;
+}
+.header__rightAccount:hover {
+  background-color: #ebeaea;
+}
