@@ -1,21 +1,18 @@
 import React from "react";
-import "./Home.css";
+import "./MainBody.css";
 import Header from "../Header/Header";
+import Home from "./Home/Home";
 import Sidebar from "../Sidebar/Sidebar";
 import Feed from "../Feed/Feed";
 import ContactsList from "../ContactsList/ContactsList";
 
-function Home() {
+function MainBody() {
   return (
-    <div className="home">
+    <div className="mainBody">
       <Header />
-      <div className="home__body">
-        <Sidebar />
-        <Feed />
-        <ContactsList />
-      </div>
+      <Home />
     </div>
   );
 }
 
-export default Home;
+export default MainBody;
