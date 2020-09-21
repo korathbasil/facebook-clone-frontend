@@ -8,6 +8,9 @@ function Feed() {
     <div className="feed">
       <Upload />
       <Post />
+      <Post />
+      <Post />
+      <Post />
     </div>
   );
 }
