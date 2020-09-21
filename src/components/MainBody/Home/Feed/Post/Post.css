@@ -1,0 +1,73 @@
+.post {
+  border: 1px solid lightgrey;
+  background-color: white;
+  border-radius: 10px;
+  height: fit content;
+}
+.post__top {
+  padding: 10px;
+}
+.post__topHead {
+  /* background-color: violet; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post__topHeadLeft {
+  display: flex;
+  align-items: center;
+}
+.post__topHeadDtails {
+  margin-left: 10px;
+}
+.post__topHeadDtails > p {
+  color: grey;
+  font-size: 14px;
+}
+.post__topText {
+  margin-top: 10px;
+}
+.post__Image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+.post__bottom {
+  padding: 10px;
+}
+.post__bottomReactionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+.post__bottomReactionsLeft {
+  display: flex;
+  align-items: center;
+}
+.post__bottomReactionsLeft > p {
+  color: grey;
+  font-size: 16px;
+}
+.post__bottomReactionsRight {
+  display: flex;
+  font-size: 16px;
+  color: grey;
+}
+.post__bottomReactionsComment {
+  margin-right: 10px;
+}
+.post__bottomActivity {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.post__bottomActivityButton {
+  display: flex;
+  align-items: center;
+  color: grey;
+  font-size: 16px !important;
+}
