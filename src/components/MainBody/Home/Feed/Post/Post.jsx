@@ -8,15 +8,23 @@ import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ModeCommentOutlinedIcon from "@material-ui/icons/ModeCommentOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 
-function Post() {
+function Post({
+  displayName,
+  avatar,
+  postCaption,
+  postImage,
+  likesCount,
+  commentsCount,
+  sharesCount,
+}) {
   return (
     <div className="post">
       <div className="post__top">
         <div className="post__topHead">
           <div className="post__topHeadLeft">
-            <Avatar />
+            <Avatar src={avatar} />
             <div className="post__topHeadDtails">
-              <h4 className="post__topHeadDisplayName">John Lucas</h4>
+              <h4 className="post__topHeadDisplayName">{displayName}</h4>
               <p className="post__topHeadTime">18:00</p>
             </div>
           </div>
@@ -25,23 +33,21 @@ function Post() {
           </div>
         </div>
         <div className="post__topText">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            eligendi vitae eius dolores doloremque quidem quo repellendus
-            placeat architecto dolor?
-          </p>
+          <p>{postCaption}</p>
         </div>
       </div>
-      <img className="post__Image" src="https://picsum.photos/400/200" alt="" />
+      <img className="post__Image" src={postImage} alt="" />
       <div className="post__bottom">
         <div className="post__bottomReactionsContainer">
           <div className="post__bottomReactionsLeft">
             <ThumbUpAltIcon />
-            <p>13K</p>
+            <p>{likesCount}</p>
           </div>
           <div className="post__bottomReactionsRight">
-            <p className="post__bottomReactionsComment">500 comments</p>
-            <p>800 shares</p>
+            <p className="post__bottomReactionsComment">
+              {commentsCount} comments
+            </p>
+            <p>{sharesCount} shares</p>
           </div>
         </div>
         <div className="post__bottomActivity">
