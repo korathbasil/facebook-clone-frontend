@@ -37,9 +37,11 @@ function Header() {
         <div className="header__centerIconContainer">
           <HomeOutlinedIcon className="header__centerIcon" />
         </div>
-        <div className="header__centerIconContainer">
-          <OndemandVideoOutlinedIcon className="header__centerIcon" />
-        </div>
+        <Link to="/watch">
+          <div className="header__centerIconContainer">
+            <OndemandVideoOutlinedIcon className="header__centerIcon" />
+          </div>
+        </Link>
         <div className="header__centerIconContainer">
           <StorefrontOutlinedIcon className="header__centerIcon" />
         </div>
