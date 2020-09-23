@@ -34,23 +34,31 @@ function Header() {
         </div>
       </div>
       <div className="header__center">
-        <div className="header__centerIconContainer">
-          <HomeOutlinedIcon className="header__centerIcon" />
-        </div>
+        <Link to="/">
+          <div className="header__centerIconContainer">
+            <HomeOutlinedIcon className="header__centerIcon" />
+          </div>
+        </Link>
         <Link to="/watch">
           <div className="header__centerIconContainer">
             <OndemandVideoOutlinedIcon className="header__centerIcon" />
           </div>
         </Link>
-        <div className="header__centerIconContainer">
-          <StorefrontOutlinedIcon className="header__centerIcon" />
-        </div>
-        <div className="header__centerIconContainer">
-          <GroupWorkOutlinedIcon className="header__centerIcon" />
-        </div>
-        <div className="header__centerIconContainer">
-          <GamesOutlinedIcon className="header__centerIcon" />
-        </div>
+        <Link to="market">
+          <div className="header__centerIconContainer">
+            <StorefrontOutlinedIcon className="header__centerIcon" />
+          </div>
+        </Link>
+        <Link to="/groups">
+          <div className="header__centerIconContainer">
+            <GroupWorkOutlinedIcon className="header__centerIcon" />
+          </div>
+        </Link>
+        <Link to="/gaming">
+          <div className="header__centerIconContainer">
+            <GamesOutlinedIcon className="header__centerIcon" />
+          </div>
+        </Link>
         <div className="header__centerIconContainer">
           <MenuOutlinedIcon className="header__centerIcon" />
         </div>

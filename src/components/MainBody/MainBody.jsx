@@ -10,8 +10,8 @@ function MainBody() {
     <div className="mainBody">
       <Header />
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/watch" component={Watch} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/watch" component={Watch} />
       </Switch>
     </div>
   );
