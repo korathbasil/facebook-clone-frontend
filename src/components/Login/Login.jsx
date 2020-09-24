@@ -7,6 +7,7 @@ import useStateContext from "../../context/DataLayer";
 // Materila UI elements
 import CloseIcon from "@material-ui/icons/Close";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import LoadingCircle from "../LoadingCircle/LoadingCircle";
 
 function Login() {
   const [{}, dispatch] = useStateContext();
@@ -53,6 +54,7 @@ function Login() {
         </div>
         <div className="login__right">
           {/* <CircularProgress color="primary" /> */}
+          {/* <LoadingCircle /> */}
           <form className="login__rightForm">
             <input
               value={loginEmail}
