@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "../../axios";
 import "./Login.css";
 import FBLogo from "./facebook-logo.png";
 // Materila UI elements
 import CloseIcon from "@material-ui/icons/Close";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function Login() {
+  const history = useHistory();
   const [signupFormOpenStatus, setSignupFormOpenStatus] = useState(false);
 
   // State form form data
   const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setloginPassword] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
-  const LoginUser = () => {};
+  const userLogin = async (e) => {
+    e.preventDefault();
+    await axios
+      .post("/auth/login", {
+        email: loginEmail,
+        password: loginPassword,
+      })
+      .then((res) => {
+        setLoginEmail("");
+        setLoginPassword("");
+        history.push("/");
+      })
+      .catch((e) => alert(e.error));
+  };
   const openSignupForm = () => {
     setSignupFormOpenStatus(true);
   };
   const closeSignupForm = () => {
     setSignupFormOpenStatus(false);
   };
-  console.log(posts);
   return (
     <div className="login">
       <div className="login__contents">
@@ -31,20 +46,23 @@ function Login() {
           </h2>
         </div>
         <div className="login__right">
-          <form action="" className="login__rightForm">
+          {/* <CircularProgress color="primary" /> */}
+          <form className="login__rightForm">
             <input
               value={loginEmail}
-              onChange={(e) => setloginEmail(e.target.value)}
+              onChange={(e) => setLoginEmail(e.target.value)}
               type="email"
               placeholder="Email address or phone number"
             />
             <input
               value={loginPassword}
-              onChange={(e) => setloginPassword(e.target.value)}
+              onChange={(e) => setLoginPassword(e.target.value)}
               type="passsword"
               placeholder="Password"
             />
-            <button type="submit">Log in</button>
+            <button onClick={userLogin} type="submit">
+              Log in
+            </button>
           </form>
           <p>Forgotten password?</p>
           <div className="login__rightBottom">
