@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import FacebookLogo from "./facebook-logo.png";
+import useStateContext from "../../context/DataLayer";
 // Material UI components
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
@@ -18,6 +19,7 @@ import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import Avatar from "@material-ui/core/Avatar";
 
 function Header() {
+  const [{ user }, dispatch] = useStateContext();
   return (
     <div className="header">
       <div className="header__left">
@@ -65,8 +67,8 @@ function Header() {
       </div>
       <div className="header__right">
         <div className="header__rightAccount">
-          <Avatar style={{ width: 30, height: 30 }} />
-          <h4>Bazil Korath</h4>
+          <Avatar src={user?.avatar} style={{ width: 30, height: 30 }} />
+          <h4>{user?.displayName}</h4>
         </div>
         <IconButton className="header__rightButtonWrapper">
           <AddOutlinedIcon />

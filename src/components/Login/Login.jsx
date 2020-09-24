@@ -3,11 +3,13 @@ import { useHistory } from "react-router-dom";
 import axios from "../../axios";
 import "./Login.css";
 import FBLogo from "./facebook-logo.png";
+import useStateContext from "../../context/DataLayer";
 // Materila UI elements
 import CloseIcon from "@material-ui/icons/Close";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 function Login() {
+  const [{}, dispatch] = useStateContext();
   const history = useHistory();
   const [signupFormOpenStatus, setSignupFormOpenStatus] = useState(false);
 
@@ -23,6 +25,10 @@ function Login() {
         password: loginPassword,
       })
       .then((res) => {
+        dispatch({
+          type: "SET_USER",
+          user: res.data,
+        });
         setLoginEmail("");
         setLoginPassword("");
         history.push("/");
