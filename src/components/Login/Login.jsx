@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../../axios";
 import "./Login.css";
 import FBLogo from "./facebook-logo.png";
 // Materila UI elements
@@ -6,12 +7,19 @@ import CloseIcon from "@material-ui/icons/Close";
 
 function Login() {
   const [signupFormOpenStatus, setSignupFormOpenStatus] = useState(false);
+
+  // State form form data
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setloginPassword] = useState("");
+
+  const LoginUser = () => {};
   const openSignupForm = () => {
     setSignupFormOpenStatus(true);
   };
   const closeSignupForm = () => {
     setSignupFormOpenStatus(false);
   };
+  console.log(posts);
   return (
     <div className="login">
       <div className="login__contents">
@@ -24,8 +32,18 @@ function Login() {
         </div>
         <div className="login__right">
           <form action="" className="login__rightForm">
-            <input type="email" placeholder="Email address or phone number" />
-            <input type="passsword" placeholder="Password" />
+            <input
+              value={loginEmail}
+              onChange={(e) => setloginEmail(e.target.value)}
+              type="email"
+              placeholder="Email address or phone number"
+            />
+            <input
+              value={loginPassword}
+              onChange={(e) => setloginPassword(e.target.value)}
+              type="passsword"
+              placeholder="Password"
+            />
             <button type="submit">Log in</button>
           </form>
           <p>Forgotten password?</p>
