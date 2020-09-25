@@ -47,6 +47,8 @@ function Login() {
   };
   const userSignup = async (e) => {
     e.preventDefault();
+    const date = new Date(DOByear + "-" + DOBmonth + "-" + DOBday);
+    console.log(date);
     await axios
       .put("/auth/signup", {
         firstName: firstName,
@@ -54,9 +56,7 @@ function Login() {
         email: signupEmail,
         password: signupPassword,
         gender: gender,
-        DOBday: DOBday,
-        DOBmonth: DOBmonth,
-        DOByear: DOByear,
+        DOB: date,
       })
       .then((res) => alert(res.data))
       .catch((e) => console.log(e.message));
