@@ -14,9 +14,18 @@ function Login() {
   const history = useHistory();
   const [signupFormOpenStatus, setSignupFormOpenStatus] = useState(false);
 
-  // State form form data
+  // State for login form data
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  //  State for signup form data
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPassword, setSignupPassword] = useState("");
+  const [gender, setGender] = useState("");
+  const [DOBday, setDOBday] = useState("");
+  const [DOBmonth, setDOBmonth] = useState("");
+  const [DOByear, setDOByear] = useState("");
 
   const userLogin = async (e) => {
     e.preventDefault();
@@ -35,6 +44,22 @@ function Login() {
         history.push("/");
       })
       .catch((e) => alert(e.error));
+  };
+  const userSignup = async (e) => {
+    e.preventDefault();
+    await axios
+      .put("/auth/signup", {
+        firstName: firstName,
+        lastName: lastName,
+        email: signupEmail,
+        password: signupPassword,
+        gender: gender,
+        DOBday: DOBday,
+        DOBmonth: DOBmonth,
+        DOByear: DOByear,
+      })
+      .then((res) => alert(res.data))
+      .catch((e) => console.log(e.message));
   };
   const openSignupForm = () => {
     setSignupFormOpenStatus(true);
@@ -91,25 +116,33 @@ function Login() {
               </div>
             </div>
             <div className="login__signupBottom">
-              <form action="" className="login__signupForm">
+              <form className="login__signupForm">
                 <div className="login__signupFormNamesContainer">
                   <input
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     type="text"
                     placeholder="First name"
                     className="login__signupFormGeneralInput login__signupFormNameInput login__signupFormFirstInput"
                   />
                   <input
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     type="text"
                     placeholder="Surname"
                     className="login__signupFormGeneralInput login__signupFormNameInput"
                   />
                 </div>
                 <input
+                  value={signupEmail}
+                  onChange={(e) => setSignupEmail(e.target.value)}
                   type="email"
                   placeholder="Email address"
                   className="login__signupFormGeneralInput"
                 />
                 <input
+                  value={signupPassword}
+                  onChange={(e) => setSignupPassword(e.target.value)}
                   type="password"
                   placeholder="Password"
                   className="login__signupFormGeneralInput"
@@ -123,6 +156,8 @@ function Login() {
                   <label>Date of birth</label>
                   <div className="login__signupFormDOB">
                     <select
+                      value={DOBday}
+                      onChange={(e) => setDOBday(e.target.value)}
                       className="login__signupFormDOBSelectors login__signupFormDOBSelector"
                       name="day"
                       id="day"
@@ -162,26 +197,30 @@ function Login() {
                       <option value="1">31</option>
                     </select>
                     <select
+                      value={DOBmonth}
+                      onChange={(e) => setDOBmonth(e.target.value)}
                       name="month"
                       id="month"
                       className="login__signupFormDOBSelectors login__signupFormDOBSelector"
                     >
                       <option value="">Month</option>
-                      <option value="jan">January</option>
-                      <option value="feb">February</option>
-                      <option value="mar">March</option>
-                      <option value="apr">April</option>
-                      <option value="may">May</option>
-                      <option value="jun">June</option>
-                      <option value="jul">July</option>
-                      <option value="aug">August</option>
-                      <option value="sep">September</option>
-                      <option value="oct">October</option>
-                      <option value="nov">November</option>
-                      <option value="dec">December</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
                     </select>
                     <select
-                      name="yesr"
+                      value={DOByear}
+                      onChange={(e) => setDOByear(e.target.value)}
+                      name="year"
                       id="year"
                       className="login__signupFormDOBSelectors"
                     >
@@ -203,11 +242,20 @@ function Login() {
                 <div className="login__signupFormGender">
                   <div className="login__signupFormGenderSelectorContainer login__signupFormGenderSelector">
                     <label>Male</label>
-                    <input type="radio" id="male" name="gender" value="male" />
+                    <input
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
+                      type="radio"
+                      id="male"
+                      name="gender"
+                      value="male"
+                    />
                   </div>
                   <div className="login__signupFormGenderSelectorContainer login__signupFormGenderSelector">
                     <label>Female</label>
                     <input
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
                       type="radio"
                       id="female"
                       name="gender"
@@ -217,6 +265,8 @@ function Login() {
                   <div className="login__signupFormGenderSelectorContainer">
                     <label>Custom</label>
                     <input
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
                       type="radio"
                       id="custom"
                       name="gender"
@@ -229,7 +279,7 @@ function Login() {
                   Cookie Policy. You may receive SMS notifications from us and
                   can opt out at any time.
                 </p>
-                <button>Sign Up</button>
+                <button onClick={userSignup}>Sign Up</button>
               </form>
             </div>
           </div>
