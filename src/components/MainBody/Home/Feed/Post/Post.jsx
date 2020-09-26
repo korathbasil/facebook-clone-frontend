@@ -20,6 +20,7 @@ function Post({
   likesCount,
   commentsCount,
   sharesCount,
+  commentsDetails,
 }) {
   const [commentsShowStatus, setCommentsShowStatus] = useState(false);
   const [commentsCheckStatus, setCommentsCheckStatus] = useState(false);
@@ -31,6 +32,18 @@ function Post({
 
     if (setCommentsShowStatus) {
       if (!commentsCheckStatus) {
+        console.log(commentsDetails);
+        const commentIds = [];
+        commentsDetails.forEach((commentsDetail) => {
+          commentIds.push(commentsDetail.commentId);
+        });
+        console.log(commentIds);
+        await axios
+          .post("/post/comments", {
+            commentIds: commentIds,
+          })
+          .then((loadedComments) => setcomments(loadedComments.data))
+          .catch((e) => alert(e.message));
       }
     }
   };
@@ -88,7 +101,14 @@ function Post({
       {commentsShowStatus && (
         <div className="post__commentsContainer">
           <PostComment postId={id} />
-          {/* <Comment /> */}
+          {comments.map((comment) => {
+            return (
+              <Comment
+                displayName={comment.displayName}
+                content={comment.content}
+              />
+            );
+          })}
         </div>
       )}
     </div>

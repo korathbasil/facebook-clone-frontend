@@ -2,15 +2,15 @@ import React from "react";
 import "./Comment.css";
 import Avatar from "@material-ui/core/Avatar";
 
-function Comment() {
+function Comment({ content, displayName }) {
   return (
     <div className="comment">
       <Avatar />
       <div className="comment__container">
         <p>
-          <strong>Bazil Korath</strong>
+          <strong>{displayName}</strong>
         </p>
-        <p>Hellooo guys how are youn doing ???</p>
+        <p>{content}</p>
       </div>
     </div>
   );

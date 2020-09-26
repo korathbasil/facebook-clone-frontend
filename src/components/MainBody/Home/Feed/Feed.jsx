@@ -31,6 +31,7 @@ function Feed() {
             likesCount={post.likesCount}
             commentsCount={post.commentsCount}
             sharesCount={post.sharesCount}
+            commentsDetails={post.comments}
           />
         );
       })}
