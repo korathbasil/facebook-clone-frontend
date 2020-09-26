@@ -22,6 +22,7 @@ function Feed() {
       {posts.map((post) => {
         return (
           <Post
+            id={post._id}
             key={post._id}
             displayName={post.author?.displayName}
             avatar={post.author?.avatar}

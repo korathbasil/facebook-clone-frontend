@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Post.css";
+import axios from "../../../../../axios";
 // Material UI elements
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Avatar from "@material-ui/core/Avatar";
@@ -11,6 +12,7 @@ import PostComment from "./Comments/PostComment";
 import Comment from "./Comments/Comment";
 
 function Post({
+  id,
   displayName,
   avatar,
   postCaption,
@@ -19,6 +21,19 @@ function Post({
   commentsCount,
   sharesCount,
 }) {
+  const [commentsShowStatus, setCommentsShowStatus] = useState(false);
+  const [commentsCheckStatus, setCommentsCheckStatus] = useState(false);
+  const [comments, setcomments] = useState([]);
+  const showCommentsHandler = async () => {
+    commentsShowStatus
+      ? setCommentsShowStatus(false)
+      : setCommentsShowStatus(true);
+
+    if (setCommentsShowStatus) {
+      if (!commentsCheckStatus) {
+      }
+    }
+  };
   return (
     <div className="post">
       <div className="post__top">
@@ -46,7 +61,10 @@ function Post({
             <p>{likesCount}</p>
           </div>
           <div className="post__bottomReactionsRight">
-            <p className="post__bottomReactionsComment">
+            <p
+              onClick={showCommentsHandler}
+              className="post__bottomReactionsComment"
+            >
               {commentsCount} comments
             </p>
             <p>{sharesCount} shares</p>
@@ -67,10 +85,12 @@ function Post({
           </div>
         </div>
       </div>
-      <div className="post__commentsContainer">
-        <PostComment />
-        <Comment />
-      </div>
+      {commentsShowStatus && (
+        <div className="post__commentsContainer">
+          <PostComment postId={id} />
+          {/* <Comment /> */}
+        </div>
+      )}
     </div>
   );
 }
