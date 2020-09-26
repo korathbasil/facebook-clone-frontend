@@ -1,5 +1,6 @@
 import React from "react";
 import "./ContactsList.css";
+import useStateContext from "../../context/DataLayer";
 // Material UI Elements
 import VideoCallIcon from "@material-ui/icons/VideoCall";
 import SearchIcon from "@material-ui/icons/Search";
@@ -7,6 +8,8 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import ContactsListItem from "./ContactsListItem/ContactsListItem";
 
 function ContactsList() {
+  const [{ user }, dispatch] = useStateContext();
+  console.log(user);
   return (
     <div className="contactsList">
       <div className="contactsList__top">
@@ -17,10 +20,9 @@ function ContactsList() {
           <MoreHorizIcon />
         </div>
       </div>
-      <ContactsListItem avatar="" displayName="John Sassy" />
-      <ContactsListItem avatar="" displayName="rafeh Qazi" />
-      <ContactsListItem avatar="" displayName="Sonny Sangha" />
-      <ContactsListItem avatar="" displayName="John Dimitri" />
+      {user?.friends.map((friend) => {
+        return <ContactsListItem displayName={friend.firstName} />;
+      })}
     </div>
   );
 }

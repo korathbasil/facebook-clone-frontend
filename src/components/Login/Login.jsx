@@ -35,6 +35,7 @@ function Login() {
         password: loginPassword,
       })
       .then((res) => {
+        console.log(res);
         dispatch({
           type: "SET_USER",
           user: res.data,
@@ -48,11 +49,11 @@ function Login() {
   const userSignup = async (e) => {
     e.preventDefault();
     const date = new Date(DOByear + "-" + DOBmonth + "-" + DOBday);
+    const displayName = firstName + " " + lastName;
     console.log(date);
     await axios
       .put("/auth/signup", {
-        firstName: firstName,
-        lastName: lastName,
+        displayName: displayName,
         email: signupEmail,
         password: signupPassword,
         gender: gender,

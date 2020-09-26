@@ -37,7 +37,7 @@ function Post({
         commentsDetails.forEach((commentsDetail) => {
           commentIds.push(commentsDetail.commentId);
         });
-        console.log(commentIds);
+        setCommentsCheckStatus(true);
         await axios
           .post("/post/comments", {
             commentIds: commentIds,
