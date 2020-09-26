@@ -7,6 +7,8 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ModeCommentOutlinedIcon from "@material-ui/icons/ModeCommentOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
+import PostComment from "./Comments/PostComment";
+import Comment from "./Comments/Comment";
 
 function Post({
   displayName,
@@ -64,6 +66,10 @@ function Post({
             <p>Share</p>
           </div>
         </div>
+      </div>
+      <div className="post__commentsContainer">
+        <PostComment />
+        <Comment />
       </div>
     </div>
   );
