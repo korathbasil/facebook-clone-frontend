@@ -1,0 +1,15 @@
+.comment {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+}
+.comment__container {
+  margin-left: 10px;
+  min-height: 40px;
+  width: fit-content;
+  background-color: var(--fbbg);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+}
