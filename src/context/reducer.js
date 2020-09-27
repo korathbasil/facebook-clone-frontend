@@ -1,6 +1,7 @@
 export const initialState = {
   user: null,
   token: null,
+  isLoading: true,
 };
 
 export const reducer = (state, action) => {
@@ -15,6 +16,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         token: action.token,
+        isLoading: action.isLoading,
       };
   }
 };
