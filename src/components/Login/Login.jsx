@@ -10,7 +10,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import LoadingCircle from "../LoadingCircle/LoadingCircle";
 
 function Login() {
-  const [{}, dispatch] = useStateContext();
+  const [{ token }, dispatch] = useStateContext();
   const history = useHistory();
   const [signupFormOpenStatus, setSignupFormOpenStatus] = useState(false);
 
@@ -27,6 +27,12 @@ function Login() {
   const [DOBmonth, setDOBmonth] = useState("");
   const [DOByear, setDOByear] = useState("");
 
+  useEffect(() => {
+    if (token) {
+      history.push("/");
+    }
+  }, [token]);
+
   const userLogin = async (e) => {
     e.preventDefault();
     await axios
@@ -35,11 +41,12 @@ function Login() {
         password: loginPassword,
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data.token);
         dispatch({
           type: "SET_USER",
           user: res.data,
         });
+        localStorage.setItem("token", res.data.token);
         setLoginEmail("");
         setLoginPassword("");
         history.push("/");
