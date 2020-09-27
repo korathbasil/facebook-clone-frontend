@@ -4,6 +4,7 @@ import "./MainBody.css";
 import Header from "../Header/Header";
 import Home from "./Home/Home";
 import Watch from "./Watch/Watch";
+import Friends from "./Friends/Friends";
 
 function MainBody() {
   return (
@@ -12,6 +13,7 @@ function MainBody() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/watch" component={Watch} />
+        <Route exact path="/friends" component={Friends} />
       </Switch>
     </div>
   );

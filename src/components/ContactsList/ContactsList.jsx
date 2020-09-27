@@ -21,7 +21,7 @@ function ContactsList() {
         </div>
       </div>
       {user?.friends.map((friend) => {
-        return <ContactsListItem displayName={friend.firstName} />;
+        return <ContactsListItem displayName={friend.displayName} />;
       })}
     </div>
   );

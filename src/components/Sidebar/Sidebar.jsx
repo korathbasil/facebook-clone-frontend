@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import SidebarOptions from "./SidebarOptions/SidebarOptions";
 // Icons for SidebarOptions
@@ -14,7 +15,9 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <SidebarOptions Icon={CovidIcon} name="COVID-19 Information Centre" />
-      <SidebarOptions Icon={FriendsIcon} name="Friendsr" />
+      <Link to="/friends">
+        <SidebarOptions Icon={FriendsIcon} name="Friends" />
+      </Link>
       <SidebarOptions Icon={GroupsIcon} name="Groups" />
       <SidebarOptions Icon={MarketPlaceIcon} name="Market Place" />
       <SidebarOptions Icon={EventsIcon} name="Events" />

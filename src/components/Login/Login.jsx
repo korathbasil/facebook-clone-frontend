@@ -27,11 +27,11 @@ function Login() {
   const [DOBmonth, setDOBmonth] = useState("");
   const [DOByear, setDOByear] = useState("");
 
-  useEffect(() => {
-    if (token) {
-      history.push("/");
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     history.push("/");
+  //   }
+  // }, [token]);
 
   const userLogin = async (e) => {
     e.preventDefault();

@@ -1,0 +1,43 @@
+.friendNameCard {
+  padding: 5px;
+  width: 100%;
+  border-radius: 10px;
+  /* background-color: var(--fbbg); */
+  height: 100px;
+  display: flex;
+}
+.friendsnameCard__info {
+  margin-left: 10px;
+  flex: 1;
+}
+.friendsnameCard__info > h3 {
+  font-size: 16px;
+  /* margin-bottom: 5px; */
+}
+.friendsnameCard__info > p {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: grey;
+}
+.friendsnameCard__buttonsContainer {
+  display: flex;
+}
+.friendsnameCard__buttonsContainer > button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+}
+.friendsnameCard__firstButton {
+  color: white;
+  background-color: var(--fbblue);
+  margin-right: 7px;
+}
+.friendsnameCard__secondButton {
+  color: black;
+  background-color: var(--fbbg);
+}
