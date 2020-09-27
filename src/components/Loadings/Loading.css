@@ -1,0 +1,25 @@
+.loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--fbbg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading > img {
+  width: 250px;
+  /* filter: grayscale(07); */
+  animation: fadeInAndOut 1s ease-in-out infinite;
+}
+
+@keyframes fadeInAndOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}

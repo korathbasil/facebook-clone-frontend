@@ -5,6 +5,7 @@ import MainBody from "./components/MainBody/MainBody";
 import Login from "./components/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import useStateContext from "./context/DataLayer";
+import Loading from "./components/Loadings/Loading";
 
 function App() {
   const [{ token }, dispatch] = useStateContext();
@@ -23,6 +24,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Loading />
           <Route exact path="/account/login" component={Login} />
           <PrivateRoute path="/" component={MainBody} />
         </Switch>
