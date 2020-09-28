@@ -4,15 +4,15 @@ import axios from "../../../axios";
 
 function Profile() {
   const [user, setUser] = useState({});
-  useEffect(() => {
-    axios
-      .post("/user", {
-        userId: "5f6f96ea8dd3c43481265222",
-      })
-      .then((user) => {
-        setUser(user.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .post("/user", {
+  //       userId: "5f6f96ea8dd3c43481265222",
+  //     })
+  //     .then((user) => {
+  //       setUser(user.data);
+  //     });
+  // }, []);
   console.log(user);
   return (
     <div className="profile">
@@ -25,7 +25,7 @@ function Profile() {
           />
           <div className="profile__headerBottom">
             <div className="profile__headerBottomNames">
-              <h2>{user?.displayName}</h2>
+              <h2>David Beckham</h2>
               <p>To capture the world</p>
             </div>
             <div className="profile__headerBottomMenu">
