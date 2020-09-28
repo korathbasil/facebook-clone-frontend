@@ -6,12 +6,17 @@ import VideocamIcon from "@material-ui/icons/Videocam";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 
-function Upload() {
+function Upload({ overlayShowStatusHandler }) {
   return (
     <div className="upload">
       <div className="upload__top">
         <Avatar />
-        <input type="text" placeholder="How  you feeling" />
+
+        <input
+          onClick={overlayShowStatusHandler}
+          type="text"
+          placeholder="How  you feeling"
+        />
       </div>
       <div className="upload__bottom">
         <div className="upload__bottomItem">

@@ -4,21 +4,21 @@ import Upload from "./Upload/Upload";
 import Post from "./Post/Post";
 import axios from "../../../../axios";
 
-function Feed() {
+function Feed({ overlayShowStatusHandler }) {
   const [posts, setPosts] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const loadedPosts = await axios.get("/posts");
-      setPosts(loadedPosts.data);
-    } catch (error) {
-      alert(error.message);
-    }
-  }, []);
+  // useEffect(async () => {
+  //   try {
+  //     const loadedPosts = await axios.get("/posts");
+  //     setPosts(loadedPosts.data);
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // }, []);
   console.log(posts);
   return (
     <div className="feed">
-      <Upload />
+      <Upload overlayShowStatusHandler={overlayShowStatusHandler} />
       {posts.map((post) => {
         return (
           <Post
