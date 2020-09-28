@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import axios from "../../../axios";
+import FriendCard from "./FriendCard/FriendCard";
+import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -72,7 +74,44 @@ function Profile() {
           </div>
           <div className="profile__bodyBottom">
             <div className="profile__bodyBottomLeft">
-              <h4>Left</h4>
+              <div className="profile__bodyBottomPhotos">
+                <div className="profile__bodyBottomPhotosTop">
+                  <h3>Photos</h3>
+                  <p>See all</p>
+                </div>
+                <div className="profile__bodyBottomPhotosContainer">
+                  <img
+                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
+                    alt=""
+                  />
+                  <img
+                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
+                    alt=""
+                  />
+                  <img
+                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
+                    alt=""
+                  />
+                  <img
+                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className="profile__bodyBottomFriends">
+                <h3>Friends</h3>
+                <p>17 mutual Friends</p>
+                <div className="profile__bodyBottomFriendsContainer">
+                  <FriendCard />
+                  <FriendCard />
+                  <FriendCard />
+                  <FriendCard />
+                  <FriendCard />
+                  <FriendCard />
+                  <FriendCard />
+                  <FriendCard />
+                </div>
+              </div>
             </div>
             <div className="profile__bodyBottomRight">
               <h4>Right</h4>

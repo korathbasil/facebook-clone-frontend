@@ -1,0 +1,13 @@
+.friendCard {
+  width: 94px;
+}
+.friendCard__profilePicture {
+  width: 94px;
+  height: 94px;
+  object-fit: cover;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+.friendCard > p {
+  font-weight: 600;
+}
