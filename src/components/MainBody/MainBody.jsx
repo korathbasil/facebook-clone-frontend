@@ -9,7 +9,7 @@ import Friends from "./Friends/Friends";
 function MainBody() {
   return (
     <div className="mainBody">
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/watch" component={Watch} />

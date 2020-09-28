@@ -6,6 +6,32 @@ import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 
 function Profile() {
   const [user, setUser] = useState({});
+  const [photos, setPhotos] = useState([
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+    {
+      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
+    },
+  ]);
   // useEffect(() => {
   //   axios
   //     .post("/user", {
@@ -80,10 +106,10 @@ function Profile() {
                   <p>See all</p>
                 </div>
                 <div className="profile__bodyBottomPhotosContainer">
-                  <img
-                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-                    alt=""
-                  />
+                  {photos.map((photo) => {
+                    return <img src={photo.src} alt="" />;
+                  })}
+
                   <img
                     src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
                     alt=""

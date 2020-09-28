@@ -1,11 +1,15 @@
 .friendCard {
   width: 94px;
 }
+.friendCard__profilePictureContainer {
+  width: 94px;
+  height: 94px;
+}
 .friendCard__profilePicture {
   width: 94px;
   height: 94px;
   object-fit: cover;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   border-radius: 10px;
 }
 .friendCard > p {
