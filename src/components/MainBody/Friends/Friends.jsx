@@ -2,6 +2,7 @@ import React from "react";
 import "./Friends.css";
 import "./FriendNameCard/FriendNameCard";
 import FriendNameCard from "./FriendNameCard/FriendNameCard";
+import Profile from "../Profile/Profile";
 import BG from "./bg.svg";
 
 function Friends() {
@@ -28,10 +29,11 @@ function Friends() {
         </div>
       </div>
       <div className="friends__main">
-        <div className="friends__mainDummy">
+        <Profile />
+        {/* <div className="friends__mainDummy">
           <img src={BG} alt="" />
           <h3>Select people names to preview thir profile</h3>
-        </div>
+        </div> */}
       </div>
     </div>
   );

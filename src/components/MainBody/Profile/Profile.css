@@ -1,0 +1,19 @@
+.profile {
+  width: 100%;
+  min-height: 600px;
+}
+.profile__header {
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+}
+.profile__headerContainer {
+  width: 70%;
+  margin: 0 auto;
+}
+.profile__headerCover {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 0 0 10px 10px;
+}
