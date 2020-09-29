@@ -6,4 +6,5 @@
 body {
   --fbblue: #176fe5;
   --fbbg: #ebeaea;
+  background-color: var(--fbbg);
 }

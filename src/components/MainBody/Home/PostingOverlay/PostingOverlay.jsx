@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PostingOverlay.css";
 import Header from "../../../Header/Header";
 import CloseIcon from "@material-ui/icons/Close";
 import Avatar from "@material-ui/core/Avatar";
+import axios from "../../../../axios";
 
 function PostingOverlay({ overlayShowStatusHandler }) {
+  const [image, setImage] = useState(null);
+  const formData = new FormData();
+
+  const selectFile = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+      formData.append("image.png", image);
+    }
+  };
+  const uploadFile = (e) => {
+    e.preventDefault();
+    axios
+      .post("/testFile", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((result) => console.log(result))
+      .catch((e) => console.log(e));
+  };
   return (
     <div className="pip">
       <Header />
@@ -19,6 +40,10 @@ function PostingOverlay({ overlayShowStatusHandler }) {
           <Avatar />
           <p>Bazil Korath</p>
         </div>
+        <form action="">
+          <input type="file" onChange={selectFile} />
+          <button onClick={uploadFile}>Upload</button>
+        </form>
         <textarea
           type="text"
           className="pip__postContent"

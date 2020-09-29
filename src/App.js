@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import useStateContext from "./context/DataLayer";
 import Loading from "./components/Loadings/Loading";
+import openSocket from "socket.io-client";
 
 function App() {
   const [{ token, isLoading }, dispatch] = useStateContext();
@@ -19,6 +20,9 @@ function App() {
         isLoading: false,
       });
     }
+  }, []);
+  useEffect(() => {
+    openSocket("http://localhost:8000");
   }, []);
   console.log(token);
   return (
