@@ -10,10 +10,14 @@ import MarketPlaceIcon from "./marketPlace-icon.png";
 import EventsIcon from "./events-icon.png";
 import MemoriesIcon from "./memories-icon.png";
 import SavedIcon from "./saved-icon.png";
+import Avatar from "@material-ui/core/Avatar";
 
 function Sidebar() {
   return (
     <div className="sidebar">
+      <Link to="/myProfile">
+        <SidebarOptions Avatar={Avatar} name="Bazil Korath" />
+      </Link>
       <SidebarOptions Icon={CovidIcon} name="COVID-19 Information Centre" />
       <Link to="/friends">
         <SidebarOptions Icon={FriendsIcon} name="Friends" />

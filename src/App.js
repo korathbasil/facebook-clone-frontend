@@ -26,8 +26,10 @@ function App() {
       <Router>
         <Switch>
           {isLoading && <Loading />}
-          <Route exact path="/account/login" component={Login} />
-          <PrivateRoute path="/" component={MainBody} />
+          {!isLoading && (
+            <Route exact path="/account/login" component={Login} />
+          )}
+          {!isLoading && <PrivateRoute path="/" component={MainBody} />}
         </Switch>
       </Router>
     </div>
