@@ -3,6 +3,7 @@ import "./Profile.css";
 import axios from "../../../axios";
 import FriendCard from "./FriendCard/FriendCard";
 import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
+import Post from "../Home/Feed/Post/Post";
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -140,7 +141,7 @@ function Profile() {
               </div>
             </div>
             <div className="profile__bodyBottomRight">
-              <h4>Right</h4>
+              <Post />
             </div>
           </div>
         </div>

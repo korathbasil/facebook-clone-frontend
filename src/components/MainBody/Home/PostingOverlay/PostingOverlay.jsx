@@ -7,16 +7,19 @@ import axios from "../../../../axios";
 
 function PostingOverlay({ overlayShowStatusHandler }) {
   const [image, setImage] = useState(null);
-  const formData = new FormData();
-
+  let formData = new FormData();
+  const x = "gvbghuvbhbvhb";
   const selectFile = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
-      formData.append("image.png", image);
+      formData.append("image", image);
+      // console.log(formData[0]);
     }
   };
   const uploadFile = (e) => {
     e.preventDefault();
+    console.log(formData);
+    console.log(image);
     axios
       .post("/testFile", formData, {
         headers: {
@@ -40,9 +43,13 @@ function PostingOverlay({ overlayShowStatusHandler }) {
           <Avatar />
           <p>Bazil Korath</p>
         </div>
-        <form action="">
-          <input type="file" onChange={selectFile} />
-          <button onClick={uploadFile}>Upload</button>
+        <form action="" onSubmit={uploadFile}>
+          <input
+            type="file"
+            onChange={selectFile}
+            encType="multipart/form-data"
+          />
+          <button type="submit">Upload</button>
         </form>
         <textarea
           type="text"

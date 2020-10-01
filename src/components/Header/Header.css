@@ -6,10 +6,11 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  background-color: white;
 }
 .header__left {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 .header__leftLogo {
   width: 40px;

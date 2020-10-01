@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import FacebookLogo from "./facebook-logo.png";
@@ -18,8 +18,14 @@ import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneO
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import Avatar from "@material-ui/core/Avatar";
 
-function Header() {
+function Header({ variant }) {
   const [{ user }, dispatch] = useStateContext();
+  const [style, setStyle] = useState("");
+  useEffect(() => {
+    if (variant === "shrinked") {
+      setStyle("display: none");
+    }
+  }, []);
   return (
     <div className="header">
       <div className="header__left">
@@ -28,11 +34,13 @@ function Header() {
         </Link>
         <div className="header__leftSearch">
           <SearchOutlinedIcon className="header__leftSearchIcon" />
-          <input
-            className="header__leftSearchInput"
-            type="text"
-            placeholder="Search Facebook"
-          />
+          {variant != "shrinked" && (
+            <input
+              className="header__leftSearchInput"
+              type="text"
+              placeholder="Search Facebook"
+            />
+          )}
         </div>
       </div>
       <div className="header__center">

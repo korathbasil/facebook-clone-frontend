@@ -15,7 +15,7 @@ function Home() {
   };
   return (
     <div className="home">
-      <Header />
+      <Header variant="shrinked" />
       <div className="home__bottom">
         <Sidebar />
         <Feed overlayShowStatusHandler={overlayShowStatusHandler} />
