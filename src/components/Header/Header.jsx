@@ -20,11 +20,14 @@ import Avatar from "@material-ui/core/Avatar";
 
 function Header({ variant }) {
   const [{ user }, dispatch] = useStateContext();
+  const [firstName, setFirstName] = useState("");
   const [style, setStyle] = useState("");
   useEffect(() => {
     if (variant === "shrinked") {
       setStyle("display: none");
     }
+    let firstName = user.displayName.split(" ")[0];
+    setFirstName(firstName);
   }, []);
   return (
     <div className="header">
@@ -76,7 +79,7 @@ function Header({ variant }) {
       <div className="header__right">
         <div className="header__rightAccount">
           <Avatar src={user?.avatar} style={{ width: 30, height: 30 }} />
-          <h4>{user?.displayName}</h4>
+          <h4>{firstName}</h4>
         </div>
         <IconButton className="header__rightButtonWrapper">
           <AddOutlinedIcon />
