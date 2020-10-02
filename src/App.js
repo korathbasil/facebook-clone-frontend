@@ -11,15 +11,15 @@ import openSocket from "socket.io-client";
 function App() {
   const [{ token, isLoading }, dispatch] = useStateContext();
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const tokenFromStorage = localStorage.getItem("token");
-      console.log(tokenFromStorage);
-      dispatch({
-        type: "SET_TOKEN",
-        token: tokenFromStorage,
-        isLoading: false,
-      });
-    }
+    // if (localStorage.getItem("token")) {
+    //   const tokenFromStorage = localStorage.getItem("token");
+    //   console.log(tokenFromStorage);
+    //   dispatch({
+    //     type: "SET_TOKEN",
+    //     token: tokenFromStorage,
+    //     isLoading: false,
+    //   });
+    // }
   }, []);
   useEffect(() => {
     openSocket("http://localhost:8000");
@@ -29,11 +29,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {isLoading && <Loading />}
-          {!isLoading && (
-            <Route exact path="/account/login" component={Login} />
-          )}
-          {!isLoading && <PrivateRoute path="/" component={MainBody} />}
+          {/* {isLoading && <Loading />} */}
+          {isLoading && <Route exact path="/account/login" component={Login} />}
+          {isLoading && <PrivateRoute path="/" component={MainBody} />}
         </Switch>
       </Router>
     </div>

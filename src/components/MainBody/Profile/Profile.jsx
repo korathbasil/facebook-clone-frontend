@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import Timeline from "./Timeline/Timeline";
+import ProfileFriends from "./ProfileFriends/ProfileFriends";
 import axios from "../../../axios";
 import FriendCard from "./FriendCard/FriendCard";
 import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
@@ -93,6 +94,7 @@ function Profile() {
         </div>
       </div>
       <Timeline photos={photos} />
+      <ProfileFriends />
     </div>
   );
 }

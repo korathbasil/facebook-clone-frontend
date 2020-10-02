@@ -1,12 +1,15 @@
 .timeline {
   width: 100%;
+  background-color: tomato;
 }
 .timeline__ {
   width: 100%;
+  background-color: thistle;
 }
 .timeline__container {
   width: 840px;
   margin: 0 auto;
+  background-color: turquoise;
 }
 .timeline__Requst {
   margin: 15px 0;
