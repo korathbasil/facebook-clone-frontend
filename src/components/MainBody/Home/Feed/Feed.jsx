@@ -3,18 +3,26 @@ import "./Feed.css";
 import Upload from "./Upload/Upload";
 import Post from "./Post/Post";
 import axios from "../../../../axios";
+import useStateContext from "../../../../context/DataLayer";
 
 function Feed({ overlayShowStatusHandler }) {
+  const [{ token }, dispatch] = useStateContext();
   const [posts, setPosts] = useState([]);
 
-  // useEffect(async () => {
-  //   try {
-  //     const loadedPosts = await axios.get("/posts");
-  //     setPosts(loadedPosts.data);
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // }, []);
+  useEffect(async () => {
+    axios
+      .get("/user/getFeed", {
+        headers: {
+          "auth-token": token,
+        },
+      })
+      .then((result) => {
+        console.log(result);
+        setPosts(result.data);
+        console.log(posts);
+      })
+      .catch((e) => console.log(e));
+  }, []);
   console.log(posts);
   return (
     <div className="feed">
