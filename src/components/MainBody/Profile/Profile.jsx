@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
+import Timeline from "./Timeline/Timeline";
 import axios from "../../../axios";
 import FriendCard from "./FriendCard/FriendCard";
 import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
@@ -91,61 +92,7 @@ function Profile() {
           />
         </div>
       </div>
-      <div className="profile__body">
-        <div className="profile__bodycontainer">
-          <div className="profile__bodyRequst">
-            <div className="profile__bodyRequstLeft">
-              <h3>Do you know David Beckham</h3>
-            </div>
-            <div className="profile__bodyRequstRight"></div>
-          </div>
-          <div className="profile__bodyBottom">
-            <div className="profile__bodyBottomLeft">
-              <div className="profile__bodyBottomPhotos">
-                <div className="profile__bodyBottomPhotosTop">
-                  <h3>Photos</h3>
-                  <p>See all</p>
-                </div>
-                <div className="profile__bodyBottomPhotosContainer">
-                  {photos.map((photo) => {
-                    return <img src={photo.src} alt="" />;
-                  })}
-
-                  <img
-                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-                    alt=""
-                  />
-                  <img
-                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-                    alt=""
-                  />
-                  <img
-                    src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="profile__bodyBottomFriends">
-                <h3>Friends</h3>
-                <p>17 mutual Friends</p>
-                <div className="profile__bodyBottomFriendsContainer">
-                  <FriendCard />
-                  <FriendCard />
-                  <FriendCard />
-                  <FriendCard />
-                  <FriendCard />
-                  <FriendCard />
-                  <FriendCard />
-                  <FriendCard />
-                </div>
-              </div>
-            </div>
-            <div className="profile__bodyBottomRight">
-              <Post />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Timeline photos={photos} />
     </div>
   );
 }
