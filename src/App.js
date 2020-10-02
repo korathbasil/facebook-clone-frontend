@@ -7,19 +7,27 @@ import PrivateRoute from "./PrivateRoute";
 import useStateContext from "./context/DataLayer";
 import Loading from "./components/Loadings/Loading";
 import openSocket from "socket.io-client";
+import axios from "./axios";
 
 function App() {
-  const [{ token, isLoading }, dispatch] = useStateContext();
+  const [{ token, user, isLoading }, dispatch] = useStateContext();
   useEffect(() => {
-    // if (localStorage.getItem("token")) {
-    //   const tokenFromStorage = localStorage.getItem("token");
-    //   console.log(tokenFromStorage);
-    //   dispatch({
-    //     type: "SET_TOKEN",
-    //     token: tokenFromStorage,
-    //     isLoading: false,
-    //   });
-    // }
+    if (localStorage.getItem("token")) {
+      const tokenFromStorage = localStorage.getItem("token");
+      console.log(tokenFromStorage);
+      axios.get("/auth/validate").then((result) => {
+        dispatch({
+          type: "SET_USER",
+          user: result.data,
+        });
+        dispatch({
+          type: "SET_TOKEN",
+          token: tokenFromStorage,
+          isLoading: false,
+        });
+        console.log(result);
+      });
+    }
   }, []);
   useEffect(() => {
     openSocket("http://localhost:8000");

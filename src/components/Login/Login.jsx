@@ -46,7 +46,7 @@ function Login() {
           type: "SET_USER",
           user: res.data,
         });
-        // localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token);
         setLoginEmail("");
         setLoginPassword("");
         history.push("/");
