@@ -18,5 +18,10 @@ export const reducer = (state, action) => {
         token: action.token,
         isLoading: action.isLoading,
       };
+    case "SET_LOADING":
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      };
   }
 };

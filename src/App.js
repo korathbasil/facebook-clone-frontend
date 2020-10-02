@@ -34,7 +34,12 @@ function App() {
           });
           console.log(result);
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          dispatch({
+            type: "SET_LOADING",
+            isLoading: false,
+          });
+        });
     }
   }, []);
   useEffect(() => {
