@@ -20,6 +20,7 @@ import Avatar from "@material-ui/core/Avatar";
 function Header({ variant }) {
   const [{ user }, dispatch] = useStateContext();
   const [firstName, setFirstName] = useState("");
+  const [modal, setModal] = useState("");
   useEffect(() => {
     let firstName = user.displayName.split(" ")[0];
     setFirstName(firstName);
@@ -78,7 +79,8 @@ function Header({ variant }) {
         </div>
         <HeaderOptions />
       </div>
-      <NotificationsModal />
+      {modal === "notifications" && <NotificationsModal />}
+      {/* <NotificationsModal /> */}
     </div>
   );
 }

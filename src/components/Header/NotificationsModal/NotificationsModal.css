@@ -3,9 +3,18 @@
   background-color: white;
   border-radius: 10px;
   height: 400px;
-  width: 400px;
+  width: 370px;
   position: absolute;
   top: 55px;
   right: 20px;
   box-shadow: 0 0 10px 2px rgba(128, 128, 128, 0.504);
+  padding: 15px 10px;
+}
+.NM__top {
+  padding: 0 5px;
+  width: 100%;
+  /* background-color: thistle; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
