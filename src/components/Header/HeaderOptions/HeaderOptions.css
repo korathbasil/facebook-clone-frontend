@@ -12,3 +12,10 @@
   height: 40px;
   margin-left: 7px;
 }
+.headerOptions__iconWrapper:hover {
+  background-color: #dfdede;
+}
+.headerOptions__iconWrapper:active {
+  background-color: #dcf3ff;
+  color: var(--fbblue);
+}

@@ -20,6 +20,7 @@ function HeaderOptions() {
       <div className="headerOptions__iconWrapper">
         <ExpandMoreOutlinedIcon style={{ fontSize: 22 }} />
       </div>
+      {/* <div className="headerOptions__modal"></div> */}
     </div>
   );
 }

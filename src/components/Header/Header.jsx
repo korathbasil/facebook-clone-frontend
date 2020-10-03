@@ -4,6 +4,7 @@ import "./Header.css";
 import FacebookLogo from "./facebook-logo.png";
 import useStateContext from "../../context/DataLayer";
 import HeaderOptions from "./HeaderOptions/HeaderOptions";
+import NotificationsModal from "./NotificationsModal/NotificationsModal";
 // Material UI components
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
@@ -19,11 +20,7 @@ import Avatar from "@material-ui/core/Avatar";
 function Header({ variant }) {
   const [{ user }, dispatch] = useStateContext();
   const [firstName, setFirstName] = useState("");
-  const [style, setStyle] = useState("");
   useEffect(() => {
-    if (variant === "shrinked") {
-      setStyle("display: none");
-    }
     let firstName = user.displayName.split(" ")[0];
     setFirstName(firstName);
   }, []);
@@ -81,6 +78,7 @@ function Header({ variant }) {
         </div>
         <HeaderOptions />
       </div>
+      <NotificationsModal />
     </div>
   );
 }
