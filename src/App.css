@@ -7,4 +7,15 @@ body {
   --fbblue: #176fe5;
   --fbbg: #ebeaea;
   background-color: var(--fbbg);
+  overflow-y: overlay;
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+  border-radius: 3px;
 }

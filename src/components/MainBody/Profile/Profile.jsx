@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import "./Profile.css";
 import Timeline from "./Timeline/Timeline";
 import ProfileFriends from "./ProfileFriends/ProfileFriends";
@@ -64,25 +64,19 @@ function Profile() {
             </div>
             <div className="profile__headerBottomMenu">
               <div className="profile__headerBottomMenuLeft">
-                <div
-                  onClick={() => {
-                    setActiveTab("timeline");
-                  }}
-                  className="profile__headerBottomMenuOption"
-                >
-                  <p>Timeline</p>
-                </div>
+                <Link to="/myProfile">
+                  <div className="profile__headerBottomMenuOption">
+                    <p>Timeline</p>
+                  </div>
+                </Link>
                 <div className="profile__headerBottomMenuOption">
                   <p>About</p>
                 </div>
-                <div
-                  onClick={() => {
-                    setActiveTab("friends");
-                  }}
-                  className="profile__headerBottomMenuOption"
-                >
-                  <p>Friends</p>
-                </div>
+                <Link to="/myProfile/friends">
+                  <div className="profile__headerBottomMenuOption">
+                    <p>Friends</p>
+                  </div>
+                </Link>
                 <div className="profile__headerBottomMenuOption">
                   <p>Photos</p>
                 </div>
@@ -106,8 +100,14 @@ function Profile() {
           />
         </div>
       </div>
-      {activeTab === "timeline" && <Timeline photos={photos} />}
-      {activeTab === "friends" && <ProfileFriends />}
+      <Switch>
+        <Route path="/myProfile">
+          <Timeline photos={photos} />
+        </Route>
+        <Route path="/myProfile/friends">
+          <ProfileFriends />
+        </Route>
+      </Switch>
     </div>
   );
 }
