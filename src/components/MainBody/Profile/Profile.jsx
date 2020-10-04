@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 import "./Profile.css";
 import Timeline from "./Timeline/Timeline";
 import ProfileFriends from "./ProfileFriends/ProfileFriends";
@@ -9,6 +10,7 @@ import Post from "../Home/Feed/Post/Post";
 
 function Profile() {
   const [user, setUser] = useState({});
+  const [activeTab, setActiveTab] = useState("timeline");
   const [photos, setPhotos] = useState([
     {
       src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
@@ -61,13 +63,23 @@ function Profile() {
             </div>
             <div className="profile__headerBottomMenu">
               <div className="profile__headerBottomMenuLeft">
-                <div className="profile__headerBottomMenuOption">
+                <div
+                  onClick={() => {
+                    setActiveTab("timeline");
+                  }}
+                  className="profile__headerBottomMenuOption"
+                >
                   <p>Timeline</p>
                 </div>
                 <div className="profile__headerBottomMenuOption">
                   <p>About</p>
                 </div>
-                <div className="profile__headerBottomMenuOption">
+                <div
+                  onClick={() => {
+                    setActiveTab("friends");
+                  }}
+                  className="profile__headerBottomMenuOption"
+                >
                   <p>Friends</p>
                 </div>
                 <div className="profile__headerBottomMenuOption">
@@ -93,8 +105,8 @@ function Profile() {
           />
         </div>
       </div>
-      <Timeline photos={photos} />
-      <ProfileFriends />
+      {activeTab === "timeline" && <Timeline photos={photos} />}
+      {activeTab === "friends" && <ProfileFriends />}
     </div>
   );
 }
