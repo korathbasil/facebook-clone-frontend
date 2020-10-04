@@ -3,13 +3,14 @@ import { Switch, Route } from "react-router-dom";
 import "./Profile.css";
 import Timeline from "./Timeline/Timeline";
 import ProfileFriends from "./ProfileFriends/ProfileFriends";
+import useStateContext from "../../../context/DataLayer";
 import axios from "../../../axios";
 import FriendCard from "./FriendCard/FriendCard";
 import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 import Post from "../Home/Feed/Post/Post";
 
 function Profile() {
-  const [user, setUser] = useState({});
+  const [{ user }, dispatch] = useStateContext();
   const [activeTab, setActiveTab] = useState("timeline");
   const [photos, setPhotos] = useState([
     {
@@ -58,7 +59,7 @@ function Profile() {
           />
           <div className="profile__headerBottom">
             <div className="profile__headerBottomNames">
-              <h2>David Beckham</h2>
+              <h2>{user.displayName}</h2>
               <p>To capture the world</p>
             </div>
             <div className="profile__headerBottomMenu">
