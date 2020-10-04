@@ -104,9 +104,7 @@ function Profile() {
         <Route path="/myProfile">
           <Timeline photos={photos} />
         </Route>
-        <Route path="/myProfile/friends">
-          <ProfileFriends />
-        </Route>
+        <Route path="/myProfile/friends" component={ProfileFriends} />
       </Switch>
     </div>
   );
