@@ -1,7 +1,3 @@
-.timeline {
-  width: 100%;
-  background-color: tomato;
-}
 .timeline__ {
   width: 100%;
   background-color: thistle;
@@ -9,37 +5,37 @@
 .timeline__container {
   width: 840px;
   margin: 0 auto;
-  background-color: turquoise;
+  /* background-color: turquoise; */
 }
-.timeline__Requst {
+.timeline__request {
   margin: 15px 0;
   padding: 10px;
   width: calc(100%-20px);
   background-color: white;
   border-radius: 10px;
 }
-.timeline__Bottom {
+.timeline__bottom {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.timeline__BottomLeft {
+.timeline__bottomLeft {
   width: 322px;
 }
-.timeline__BottomPhotos {
+.timeline__bottomPhotos {
   width: 100%;
   background-color: white;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
 }
-.timeline__BottomPhotosTop {
+.timeline__bottomPhotosTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
-.timeline__BottomPhotosContainer {
+.timeline__bottomPhotosContainer {
   border-radius: 10px;
   overflow: hidden;
   width: 100%;
@@ -47,26 +43,26 @@
   grid-gap: 4px;
   grid-template-columns: repeat(3, 98px);
 }
-.timeline__BottomPhotosContainer > img {
+.timeline__bottomPhotosContainer > img {
   width: 98px;
   height: 98px;
 }
 
-.timeline__BottomFriends {
+.timeline__bottomFriends {
   width: 100%;
   background-color: white;
   border-radius: 10px;
   padding: 10px;
 }
-.timeline__BottomFriends > h3 {
+.timeline__bottomFriends > h3 {
   margin-bottom: 10px;
 }
-.timeline__BottomFriends > p {
+.timeline__bottomFriends > p {
   color: grey;
   font-size: 16px;
   margin-bottom: 10px;
 }
-.timeline__BottomFriendsContainer {
+.timeline__bottomFriendsContainer {
   width: calc(100% - 20px);
   display: grid;
   grid-gap: 10px;
@@ -74,7 +70,7 @@
 }
 
 /* igbiygbyigbiygiug */
-.timeline__BottomRight {
+.timeline__bottomRight {
   width: 503px;
   /* background-color: white; */
   border-radius: 10px;

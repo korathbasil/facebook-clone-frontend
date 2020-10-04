@@ -2,6 +2,7 @@ import React from "react";
 import "./Timeline.css";
 import FriendCard from "../FriendCard/FriendCard";
 import Post from "../../Home/Feed/Post/Post";
+import Upload from "../../Home/Feed/Upload/Upload";
 
 function Timeline({ photos }) {
   return (
@@ -55,6 +56,7 @@ function Timeline({ photos }) {
             </div>
           </div>
           <div className="timeline__bottomRight">
+            <Upload />
             <Post />
           </div>
         </div>
