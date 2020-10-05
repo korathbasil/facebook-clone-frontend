@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "./Profile.css";
 import Timeline from "./Timeline/Timeline";
@@ -10,6 +10,7 @@ import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 import Post from "../Home/Feed/Post/Post";
 
 function Profile() {
+  const timeline = useRef();
   const [{ user }, dispatch] = useStateContext();
   const [activeTab, setActiveTab] = useState("timeline");
   const [photos, setPhotos] = useState([
@@ -64,29 +65,34 @@ function Profile() {
             </div>
             <div className="profile__headerBottomMenu">
               <div className="profile__headerBottomMenuLeft">
-                <Link to="/myProfile">
-                  <div className="profile__headerBottomMenuOption">
-                    <p>Timeline</p>
-                  </div>
-                </Link>
-                <div className="profile__headerBottomMenuOption">
+                <div
+                  onClick={() => {
+                    setActiveTab("timeline");
+                  }}
+                  className={`profile__headerBottomMenuOption`}
+                >
+                  <p>Timeline</p>
+                </div>
+                <div
+                  className={"profile__headerBottomMenuOption"}{
+                    activeTab === "timeline" ? "active" : ""
+                  }
+                >
                   <p>About</p>
                 </div>
-                <Link to="/myProfile/friends">
-                  <div className="profile__headerBottomMenuOption">
-                    <p>Friends</p>
-                  </div>
-                </Link>
-                <div className="profile__headerBottomMenuOption">
+                <div className={`profile__headerBottomMenuOption`}>
+                  <p>Friends</p>
+                </div>
+                <div className={`profile__headerBottomMenuOption`}>
                   <p>Photos</p>
                 </div>
-                <div className="profile__headerBottomMenuOption">
+                <div className={`profile__headerBottomMenuOption`}>
                   <p>Archive</p>
                 </div>
-                <div className="profile__headerBottomMenuOption">
+                <div className={`profile__headerBottomMenuOption`}>
                   <p>Videos</p>
                 </div>
-                <div className="profile__headerBottomMenuOption">
+                <div className={`profile__headerBottomMenuOption`}>
                   <p>More</p>
                 </div>
               </div>
@@ -100,12 +106,8 @@ function Profile() {
           />
         </div>
       </div>
-      <Switch>
-        <Route path="/myProfile">
-          <Timeline photos={photos} />
-        </Route>
-        <Route path="/myProfile/friends" component={ProfileFriends} />
-      </Switch>
+      <Timeline photos={photos} />
+      <ProfileFriends />
     </div>
   );
 }
