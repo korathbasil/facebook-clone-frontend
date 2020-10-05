@@ -103,7 +103,7 @@ function Profile() {
                 <div className={`profile__headerBottomMenuOption active`}>
                   <p>Videos</p>
                 </div>
-                <div className={`profile__headerBottomMenuOption`}>
+                <div className="profile__headerBottomMenuOption active">
                   <p>More</p>
                 </div>
               </div>

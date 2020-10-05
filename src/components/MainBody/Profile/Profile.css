@@ -65,7 +65,6 @@
 }
 .profile__headerBottomMenuOption:active {
   color: var(--fbblue);
-  /* border-bottom: 5px solid var(--fbblue); */
 }
 
 .profile__headerProfilePicture {
