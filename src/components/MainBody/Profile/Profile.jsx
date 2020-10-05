@@ -74,22 +74,33 @@ function Profile() {
                   <p>Timeline</p>
                 </div>
                 <div
-                  className={"profile__headerBottomMenuOption"}{
+                  className={`profile__headerBottomMenuOption  ${
                     activeTab === "timeline" ? "active" : ""
-                  }
+                  }`}
                 >
                   <p>About</p>
                 </div>
-                <div className={`profile__headerBottomMenuOption`}>
+                <div
+                  onClick={() => {
+                    setActiveTab("friends");
+                  }}
+                  className={`profile__headerBottomMenuOption  ${
+                    activeTab === "timeline" ? "active" : ""
+                  }`}
+                >
                   <p>Friends</p>
                 </div>
-                <div className={`profile__headerBottomMenuOption`}>
+                <div
+                  className={`profile__headerBottomMenuOption  ${
+                    activeTab === "friends" ? "active" : ""
+                  }`}
+                >
                   <p>Photos</p>
                 </div>
-                <div className={`profile__headerBottomMenuOption`}>
+                <div className={`profile__headerBottomMenuOption `}>
                   <p>Archive</p>
                 </div>
-                <div className={`profile__headerBottomMenuOption`}>
+                <div className={`profile__headerBottomMenuOption active`}>
                   <p>Videos</p>
                 </div>
                 <div className={`profile__headerBottomMenuOption`}>
@@ -106,8 +117,8 @@ function Profile() {
           />
         </div>
       </div>
-      <Timeline photos={photos} />
-      <ProfileFriends />
+      {activeTab === "timeline" && <Timeline photos={photos} />}
+      {activeTab === "friends" && <ProfileFriends />}
     </div>
   );
 }
