@@ -1,5 +1,6 @@
 export const initialState = {
   user: null,
+  selectedUser: null,
   token: null,
   isLoading: true,
 };
@@ -22,6 +23,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         isLoading: action.isLoading,
+      };
+    case "SET_SELECTED_USER":
+      return {
+        ...state,
+        selectedUser: action.user,
       };
   }
 };

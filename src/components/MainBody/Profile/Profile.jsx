@@ -11,7 +11,7 @@ import Post from "../Home/Feed/Post/Post";
 
 function Profile() {
   const timeline = useRef();
-  const [{ user }, dispatch] = useStateContext();
+  const [{ selectedUser }, dispatch] = useStateContext();
   const [activeTab, setActiveTab] = useState("timeline");
   const [photos, setPhotos] = useState([
     {
@@ -39,16 +39,20 @@ function Profile() {
       src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
     },
   ]);
-  // useEffect(() => {
-  //   axios
-  //     .post("/user", {
-  //       userId: "5f6f96ea8dd3c43481265222",
-  //     })
-  //     .then((user) => {
-  //       setUser(user.data);
-  //     });
-  // }, []);
-  console.log(user);
+  useEffect(() => {
+    axios
+      .post("/user/getUser", {
+        userId: "5f7f19cc6210b1561207400c",
+      })
+      .then((result) => {
+        dispatch({
+          type: "SET_SELECTED_USER",
+          user: result.data,
+        });
+      })
+      .catch((e) => console.log(e));
+  }, []);
+  // console.log(user);
   return (
     <div className="profile">
       <div className="profile__header">
@@ -60,7 +64,7 @@ function Profile() {
           />
           <div className="profile__headerBottom">
             <div className="profile__headerBottomNames">
-              <h2>{user.displayName}</h2>
+              <h2>{selectedUser?.displayName}</h2>
               <p>To capture the world</p>
             </div>
             <div className="profile__headerBottomMenu">
