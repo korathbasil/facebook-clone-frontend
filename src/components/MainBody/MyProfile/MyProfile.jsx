@@ -6,7 +6,7 @@ function MyProfile() {
   return (
     <div>
       <Header />
-      <Profile />
+      <Profile ownAccount={true} />
     </div>
   );
 }

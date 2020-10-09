@@ -11,7 +11,7 @@ import Post from "../Home/Feed/Post/Post";
 import Avatar from "@material-ui/core/Avatar";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 
-function Profile() {
+function Profile({ ownAccout }) {
   const timeline = useRef();
   const [{ selectedUser }, dispatch] = useStateContext();
   const [activeTab, setActiveTab] = useState("timeline");
@@ -65,10 +65,12 @@ function Profile() {
               alt=""
               className="profile__headerCoverImage"
             />
-            <div className="profile__headerCoverButton">
-              <CameraAltIcon />
-              <p>Edit cover photo</p>
-            </div>
+            {ownAccout && (
+              <div className="profile__headerCoverButton">
+                <CameraAltIcon />
+                <p>Edit cover photo</p>
+              </div>
+            )}
           </div>
 
           <div className="profile__headerBottom">
