@@ -73,13 +73,18 @@ function Profile() {
                   onClick={() => {
                     setActiveTab("timeline");
                   }}
-                  className={`profile__headerBottomMenuOption`}
+                  className={`profile__headerBottomMenuOption  ${
+                    activeTab === "timeline" ? "activeTab" : ""
+                  }`}
                 >
                   <p>Timeline</p>
                 </div>
                 <div
+                  onClick={() => {
+                    setActiveTab("about");
+                  }}
                   className={`profile__headerBottomMenuOption  ${
-                    activeTab === "timeline" ? "active" : ""
+                    activeTab === "about" ? "activeTab" : ""
                   }`}
                 >
                   <p>About</p>
@@ -89,25 +94,49 @@ function Profile() {
                     setActiveTab("friends");
                   }}
                   className={`profile__headerBottomMenuOption  ${
-                    activeTab === "timeline" ? "active" : ""
+                    activeTab === "friends" ? "activeTab" : ""
                   }`}
                 >
                   <p>Friends</p>
                 </div>
                 <div
+                  onClick={() => {
+                    setActiveTab("photos");
+                  }}
                   className={`profile__headerBottomMenuOption  ${
-                    activeTab === "friends" ? "active" : ""
+                    activeTab === "photos" ? "activeTab" : ""
                   }`}
                 >
                   <p>Photos</p>
                 </div>
-                <div className={`profile__headerBottomMenuOption `}>
+                <div
+                  onClick={() => {
+                    setActiveTab("archive");
+                  }}
+                  className={`profile__headerBottomMenuOption  ${
+                    activeTab === "archive" ? "activeTab" : ""
+                  }`}
+                >
                   <p>Archive</p>
                 </div>
-                <div className={`profile__headerBottomMenuOption active`}>
+                <div
+                  onClick={() => {
+                    setActiveTab("videos");
+                  }}
+                  className={`profile__headerBottomMenuOption  ${
+                    activeTab === "videos" ? "activeTab" : ""
+                  }`}
+                >
                   <p>Videos</p>
                 </div>
-                <div className="profile__headerBottomMenuOption active">
+                <div
+                  onClick={() => {
+                    setActiveTab("more");
+                  }}
+                  className={`profile__headerBottomMenuOption  ${
+                    activeTab === "more" ? "activeTab" : ""
+                  }`}
+                >
                   <p>More</p>
                 </div>
               </div>
@@ -121,8 +150,10 @@ function Profile() {
           />
         </div>
       </div>
-      {activeTab === "timeline" && <Timeline photos={photos} />}
-      {activeTab === "friends" && <ProfileFriends />}
+      <div className="profile__bottomBody">
+        {activeTab === "timeline" && <Timeline photos={photos} />}
+        {activeTab === "friends" && <ProfileFriends />}
+      </div>
     </div>
   );
 }

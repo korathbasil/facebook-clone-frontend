@@ -63,8 +63,9 @@
 .profile__headerBottomMenuOption:hover {
   background-color: var(--fbbg);
 }
-.profile__headerBottomMenuOption:active {
+.activeTab {
   color: var(--fbblue);
+  background-color: var(--fbbg);
 }
 
 .profile__headerProfilePicture {
@@ -77,4 +78,9 @@
   width: 200px;
   height: 200px;
   object-fit: cover;
+}
+
+.profile__bottomBody {
+  width: 840px;
+  margin: 0 auto;
 }

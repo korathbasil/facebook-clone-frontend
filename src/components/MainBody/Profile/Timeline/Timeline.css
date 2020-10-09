@@ -2,11 +2,7 @@
   width: 100%;
   background-color: thistle;
 }
-.timeline__container {
-  width: 840px;
-  margin: 0 auto;
-  /* background-color: turquoise; */
-}
+
 .timeline__request {
   margin: 15px 0;
   padding: 10px;
