@@ -11,12 +11,14 @@ import EventsIcon from "./events-icon.png";
 import MemoriesIcon from "./memories-icon.png";
 import SavedIcon from "./saved-icon.png";
 import Avatar from "@material-ui/core/Avatar";
+import useStateContext from "../../context/DataLayer";
 
 function Sidebar() {
+  const [{ user }, dispatch] = useStateContext();
   return (
     <div className="sidebar">
-      <Link to="/myProfile">
-        <SidebarOptions Avatar={Avatar} name="Bazil Korath" />
+      <Link to="/profile">
+        <SidebarOptions Avatar={Avatar} name={user?.displayName} />
       </Link>
       <SidebarOptions Icon={CovidIcon} name="COVID-19 Information Centre" />
       <Link to="/friends">

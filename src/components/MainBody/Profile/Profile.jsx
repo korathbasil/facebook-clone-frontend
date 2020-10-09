@@ -8,6 +8,7 @@ import axios from "../../../axios";
 import FriendCard from "./FriendCard/FriendCard";
 import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 import Post from "../Home/Feed/Post/Post";
+import Avatar from "@material-ui/core/Avatar";
 
 function Profile() {
   const timeline = useRef();
@@ -143,11 +144,14 @@ function Profile() {
               <div className="profile__headerBottomMenuRight"></div>
             </div>
           </div>
-          <img
+          {/* <img
             className="profile__headerProfilePicture"
             src="https://i.pinimg.com/originals/64/67/39/6467390a1afd37ab5e1932b2019a2287.jpg"
             alt=""
-          />
+          /> */}
+          <div className="profile__headerProfilePicture">
+            <Avatar style={{ width: 195, height: 195 }} />
+          </div>
         </div>
       </div>
       <div className="profile__bottomBody">

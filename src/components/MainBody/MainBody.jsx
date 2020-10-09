@@ -15,7 +15,7 @@ function MainBody() {
         <Route exact path="/" component={Home} />
         <Route exact path="/watch" component={Watch} />
         <Route exact path="/friends" component={Friends} />
-        <Route exact path="/myProfile" component={Profile} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </div>
   );
