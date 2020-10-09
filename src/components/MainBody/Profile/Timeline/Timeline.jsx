@@ -4,17 +4,23 @@ import FriendCard from "../FriendCard/FriendCard";
 import Post from "../../Home/Feed/Post/Post";
 import Upload from "../../Home/Feed/Upload/Upload";
 import useStateContext from "../../../../context/DataLayer";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
-function Timeline({ photos }) {
+function Timeline({ photos, ownAccount }) {
   const [{ selectedUser }, dispatch] = useStateContext();
   return (
     <div className="timeline">
-      <div className="timeline__request">
-        <div className="timeline__requestLeft">
-          <h3>Do you know David Beckham</h3>
+      {!ownAccount && (
+        <div className="timeline__request">
+          <div className="timeline__requestLeft">
+            <h3>Do you know {selectedUser?.displayName}</h3>
+          </div>
+          <div className="timeline__requestRight">
+            <PersonAddIcon />
+            <p>Add friend</p>
+          </div>
         </div>
-        <div className="timeline__requestRight"></div>
-      </div>
+      )}
       <div className="timeline__bottom">
         <div className="timeline__bottomLeft">
           <div className="timeline__bottomPhotos">

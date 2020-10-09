@@ -4,16 +4,16 @@ import "./Profile.css";
 import Timeline from "./Timeline/Timeline";
 import ProfileFriends from "./ProfileFriends/ProfileFriends";
 import useStateContext from "../../../context/DataLayer";
-import axios from "../../../axios";
 import FriendCard from "./FriendCard/FriendCard";
 import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 import Post from "../Home/Feed/Post/Post";
 import Avatar from "@material-ui/core/Avatar";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 
-function Profile({ ownAccout }) {
+function Profile({ ownAccount }) {
   const timeline = useRef();
   const [{ selectedUser }, dispatch] = useStateContext();
+
   const [activeTab, setActiveTab] = useState("timeline");
   const [photos, setPhotos] = useState([
     {
@@ -41,19 +41,6 @@ function Profile({ ownAccout }) {
       src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
     },
   ]);
-  useEffect(() => {
-    axios
-      .post("/user/getUser", {
-        userId: "5f7f19cc6210b1561207400c",
-      })
-      .then((result) => {
-        dispatch({
-          type: "SET_SELECTED_USER",
-          user: result.data,
-        });
-      })
-      .catch((e) => console.log(e));
-  }, []);
   // console.log(user);
   return (
     <div className="profile">
@@ -65,7 +52,7 @@ function Profile({ ownAccout }) {
               alt=""
               className="profile__headerCoverImage"
             />
-            {ownAccout && (
+            {ownAccount && (
               <div className="profile__headerCoverButton">
                 <CameraAltIcon />
                 <p>Edit cover photo</p>
@@ -120,7 +107,7 @@ function Profile({ ownAccout }) {
                 >
                   <p>Photos</p>
                 </div>
-                <div
+                {/* <div
                   onClick={() => {
                     setActiveTab("archive");
                   }}
@@ -129,8 +116,8 @@ function Profile({ ownAccout }) {
                   }`}
                 >
                   <p>Archive</p>
-                </div>
-                <div
+                </div> */}
+                {/* <div
                   onClick={() => {
                     setActiveTab("videos");
                   }}
@@ -139,8 +126,8 @@ function Profile({ ownAccout }) {
                   }`}
                 >
                   <p>Videos</p>
-                </div>
-                <div
+                </div> */}
+                {/* <div
                   onClick={() => {
                     setActiveTab("more");
                   }}
@@ -149,7 +136,7 @@ function Profile({ ownAccout }) {
                   }`}
                 >
                   <p>More</p>
-                </div>
+                </div> */}
               </div>
               <div className="profile__headerBottomMenuRight"></div>
             </div>
@@ -161,14 +148,18 @@ function Profile({ ownAccout }) {
           /> */}
           <div className="profile__headerProfilePicture">
             <Avatar style={{ width: 190, height: 190 }} />
-            <div className="profile__headerProfilePictureButton">
-              <CameraAltIcon />
-            </div>
+            {ownAccount && (
+              <div className="profile__headerProfilePictureButton">
+                <CameraAltIcon />
+              </div>
+            )}
           </div>
         </div>
       </div>
       <div className="profile__bottomBody">
-        {activeTab === "timeline" && <Timeline photos={photos} />}
+        {activeTab === "timeline" && (
+          <Timeline photos={photos} ownAccount={ownAccount} />
+        )}
         {activeTab === "friends" && <ProfileFriends />}
       </div>
     </div>
