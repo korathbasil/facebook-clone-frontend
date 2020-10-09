@@ -15,8 +15,14 @@
 .profile__headerCover {
   width: 100%;
   height: 320px;
-  object-fit: cover;
+  overflow: hidden;
+  background-color: var(--fbbg);
   border-radius: 0 0 10px 10px;
+}
+.profile__headerCoverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .profile__headerBottom {
   width: 100%;

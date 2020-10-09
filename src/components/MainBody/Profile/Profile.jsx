@@ -58,11 +58,14 @@ function Profile() {
     <div className="profile">
       <div className="profile__header">
         <div className="profile__headerContainer">
-          <img
-            src="https://cdn.pixabay.com/photo/2012/08/27/14/19/evening-55067__340.png"
-            alt=""
-            className="profile__headerCover"
-          />
+          <div className="profile__headerCover">
+            <img
+              src="https://cdn.pixabay.com/photo/2012/08/27/14/19/evening-55067__340.png"
+              alt=""
+              className="profile__headerCoverImage"
+            />
+          </div>
+
           <div className="profile__headerBottom">
             <div className="profile__headerBottomNames">
               <h2>{selectedUser?.displayName}</h2>
@@ -150,7 +153,7 @@ function Profile() {
             alt=""
           /> */}
           <div className="profile__headerProfilePicture">
-            <Avatar style={{ width: 195, height: 195 }} />
+            <Avatar style={{ width: 190, height: 190 }} />
           </div>
         </div>
       </div>
