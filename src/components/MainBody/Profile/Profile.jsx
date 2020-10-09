@@ -9,6 +9,7 @@ import FriendCard from "./FriendCard/FriendCard";
 import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 import Post from "../Home/Feed/Post/Post";
 import Avatar from "@material-ui/core/Avatar";
+import CameraAltIcon from "@material-ui/icons/CameraAlt";
 
 function Profile() {
   const timeline = useRef();
@@ -64,6 +65,10 @@ function Profile() {
               alt=""
               className="profile__headerCoverImage"
             />
+            <div className="profile__headerCoverButton">
+              <CameraAltIcon />
+              <p>Edit cover photo</p>
+            </div>
           </div>
 
           <div className="profile__headerBottom">
@@ -154,6 +159,9 @@ function Profile() {
           /> */}
           <div className="profile__headerProfilePicture">
             <Avatar style={{ width: 190, height: 190 }} />
+            <div className="profile__headerProfilePictureButton">
+              <CameraAltIcon />
+            </div>
           </div>
         </div>
       </div>

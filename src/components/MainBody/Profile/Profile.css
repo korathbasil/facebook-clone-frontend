@@ -18,11 +18,27 @@
   overflow: hidden;
   background-color: var(--fbbg);
   border-radius: 0 0 10px 10px;
+  position: relative;
 }
 .profile__headerCoverImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.profile__headerCoverButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 7px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.profile__headerCoverButton > p {
+  margin-left: 5px;
+  font-weight: 800;
 }
 .profile__headerBottom {
   width: 100%;
@@ -88,7 +104,18 @@
   align-items: center;
   justify-content: center;
 }
-.profile__headerProfilePicture > * {
+.profile__headerProfilePictureButton {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  background-color: var(--fbbg);
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .profile__bottomBody {
