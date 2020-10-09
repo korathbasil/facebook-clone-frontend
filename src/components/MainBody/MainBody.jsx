@@ -6,6 +6,7 @@ import Home from "./Home/Home";
 import Watch from "./Watch/Watch";
 import Friends from "./Friends/Friends";
 import Profile from "./Profile/Profile";
+import MyProfile from "./MyProfile/MyProfile";
 
 function MainBody() {
   return (
@@ -15,7 +16,7 @@ function MainBody() {
         <Route exact path="/" component={Home} />
         <Route exact path="/watch" component={Watch} />
         <Route exact path="/friends" component={Friends} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile" component={MyProfile} />
       </Switch>
     </div>
   );

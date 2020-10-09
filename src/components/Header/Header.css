@@ -67,6 +67,7 @@
   border-radius: 99px;
   display: flex;
   align-items: center;
+  /* background-color: #dcf3ff; */
 }
 .header__rightAccount > h4 {
   margin: 0 5px;
