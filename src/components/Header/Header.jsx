@@ -5,6 +5,7 @@ import FacebookLogo from "./facebook-logo.png";
 import useStateContext from "../../context/DataLayer";
 import HeaderOptions from "./HeaderOptions/HeaderOptions";
 import NotificationsModal from "./NotificationsModal/NotificationsModal";
+import SearchModal from "./SearchModal/SearchModal";
 // Material UI components
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
@@ -27,6 +28,7 @@ function Header({ variant }) {
   }, []);
   return (
     <div className="header">
+      <SearchModal />
       <div className="header__left">
         <Link to="/">
           <img className="header__leftLogo" src={FacebookLogo} alt="" />
