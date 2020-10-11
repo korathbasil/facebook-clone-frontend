@@ -2,9 +2,9 @@ import React from "react";
 import "./FriendNameCard.css";
 import Avatar from "@material-ui/core/Avatar";
 
-function FriendNameCard() {
+function FriendNameCard({ setSelectedFriend }) {
   return (
-    <div className="friendNameCard">
+    <div onClick={() => setSelectedFriend(true)} className="friendNameCard">
       <Avatar style={{ width: 60, height: 60 }} />
       <div className="friendsnameCard__info">
         <h3>bazil Korath</h3>

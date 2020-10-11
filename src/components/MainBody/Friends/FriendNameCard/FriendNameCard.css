@@ -6,6 +6,9 @@
   height: 100px;
   display: flex;
 }
+.friendNameCard:active {
+  background-color: var(--fbbg);
+}
 .friendsnameCard__info {
   margin-left: 10px;
   flex: 1;

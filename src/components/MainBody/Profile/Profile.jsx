@@ -9,6 +9,8 @@ import FriendNameCard from "../Friends/FriendNameCard/FriendNameCard";
 import Post from "../Home/Feed/Post/Post";
 import Avatar from "@material-ui/core/Avatar";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import EditIcon from "@material-ui/icons/Edit";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 function Profile({ ownAccount }) {
   const timeline = useRef();
@@ -138,7 +140,24 @@ function Profile({ ownAccount }) {
                   <p>More</p>
                 </div> */}
               </div>
-              <div className="profile__headerBottomMenuRight"></div>
+              <div className="profile__headerBottomMenuRight">
+                {ownAccount && (
+                  <div className="profile__headerBottomMenuRightOwn">
+                    <div className="profile__headerBottomMenuRightEdit">
+                      <EditIcon />
+                      <p>Edit profile</p>
+                    </div>
+                  </div>
+                )}
+                {!ownAccount && (
+                  <div className="profile__headerBottomMenuRightOthers">
+                    <div className="profile__headerBottomMenuRightAddFriend">
+                      <PersonAddIcon />
+                      <p>Add friend</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           {/* <img

@@ -50,6 +50,8 @@
 .profile__headerBottomMenu {
   width: 800px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-top: 1px solid lightgrey;
   margin-top: 10px;
 }
@@ -89,7 +91,35 @@
   color: var(--fbblue);
   background-color: var(--fbbg);
 }
-
+.profile__headerBottomMenuRightEdit {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--fbbg);
+  cursor: pointer;
+}
+.profile__headerBottomMenuRightEdit > p {
+  margin-left: 5px;
+  font-weight: 800;
+}
+.profile__headerBottomMenuRightEdit:hover {
+  background-color: var(--fbbgdark);
+}
+.profile__headerBottomMenuRightAddFriend {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--fbbg);
+}
+.profile__headerBottomMenuRightAddFriend > p {
+  font-weight: 800;
+  margin-left: 5px;
+}
+..profile__headerBottomMenuRightAddFriend:hover {
+  background-color: var(--fbbgdark);
+}
 .profile__headerProfilePicture {
   top: 145px;
   left: 50%;

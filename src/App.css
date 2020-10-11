@@ -6,6 +6,7 @@
 body {
   --fbblue: #176fe5;
   --fbbg: #ebeaea;
+  --fbbgdark: #dbdada;
   background-color: var(--fbbg);
   overflow-y: overlay;
 }

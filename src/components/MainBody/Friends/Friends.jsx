@@ -21,16 +21,16 @@ function Friends() {
             <p>View sent requests</p>
           </div>
           <div className="friends__sidebarReqContainer">
-            <FriendNameCard onClick={() => setSelectedFriend(true)} />
+            <FriendNameCard setSelectedFriend={setSelectedFriend} />
             <FriendNameCard />
             <FriendNameCard />
           </div>
-          <div className="friends__sidebarPeopleLists">
+          {/* <div className="friends__sidebarPeopleLists">
             <h3>People you may know</h3>
             <FriendNameCard />
             <FriendNameCard />
             <FriendNameCard />
-          </div>
+          </div> */}
         </div>
         <div className="friends__main">
           {selectedFriend && <Profile />}
