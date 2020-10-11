@@ -8,6 +8,7 @@ import AddModal from "../AddModal/AddModal";
 import MessengerModal from "../MessengerModal/MessengerModal";
 import NotificationsModal from "../NotificationsModal/NotificationsModal";
 import MoreModal from "../MoreModal/MoreModal";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 function HeaderOptions() {
   const [modal, setModal] = useState("");
@@ -18,25 +19,34 @@ function HeaderOptions() {
       setModal(modalName);
     }
   };
+  const modalCancel = () => {
+    if (modal === "") {
+      setModal("");
+    }
+  };
 
   return (
     <div className="headerOptions">
-      <div
-        onClick={() => modalChangeHandler("add")}
-        className={`headerOptions__iconWrapper${
-          modal === "add" ? " headerOptions__iconWrapper-active" : ""
-        }`}
-      >
-        <AddOutlinedIcon style={{ fontSize: 22 }} />
-      </div>
-      <div
-        onClick={() => modalChangeHandler("messenger")}
-        className={`headerOptions__iconWrapper${
-          modal === "messenger" ? " headerOptions__iconWrapper-active" : ""
-        }`}
-      >
-        <ChatBubbleRoundedIcon style={{ fontSize: 22 }} />
-      </div>
+      <ClickAwayListener onClickAway={modalCancel}>
+        <div
+          onClick={() => modalChangeHandler("add")}
+          className={`headerOptions__iconWrapper${
+            modal === "add" ? " headerOptions__iconWrapper-active" : ""
+          }`}
+        >
+          <AddOutlinedIcon style={{ fontSize: 22 }} />
+        </div>
+      </ClickAwayListener>
+      <ClickAwayListener onClickAway={modalCancel}>
+        <div
+          onClick={() => modalChangeHandler("messenger")}
+          className={`headerOptions__iconWrapper${
+            modal === "messenger" ? " headerOptions__iconWrapper-active" : ""
+          }`}
+        >
+          <ChatBubbleRoundedIcon style={{ fontSize: 22 }} />
+        </div>
+      </ClickAwayListener>
       <div
         onClick={() => modalChangeHandler("notifications")}
         className={`headerOptions__iconWrapper${
@@ -53,6 +63,7 @@ function HeaderOptions() {
       >
         <ExpandMoreOutlinedIcon style={{ fontSize: 22 }} />
       </div>
+
       {/* <div className="headerOptions__modal"></div> */}
       {modal === "add" && <AddModal />}
       {modal === "messenger" && <MessengerModal />}
