@@ -4,7 +4,6 @@ import "./Header.css";
 import FacebookLogo from "./facebook-logo.png";
 import useStateContext from "../../context/DataLayer";
 import HeaderOptions from "./HeaderOptions/HeaderOptions";
-import NotificationsModal from "./NotificationsModal/NotificationsModal";
 import SearchModal from "./SearchModal/SearchModal";
 // Material UI components
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
@@ -21,26 +20,29 @@ import Avatar from "@material-ui/core/Avatar";
 function Header({ variant }) {
   const [{ user }, dispatch] = useStateContext();
   const [firstName, setFirstName] = useState("");
-  const [modal, setModal] = useState("");
+  const [showSearchModal, setShowSearchModal] = useState(false);
   useEffect(() => {
     let firstName = user.displayName.split(" ")[0];
     setFirstName(firstName);
   }, []);
+  const setShowSearchModalStatus = () => {
+    showSearchModal ? setShowSearchModal(false) : setShowSearchModal(true);
+  };
   return (
     <div className="header">
-      <SearchModal />
+      {showSearchModal && (
+        <SearchModal setShowSearchModalStatus={setShowSearchModalStatus} />
+      )}
       <div className="header__left">
         <Link to="/">
           <img className="header__leftLogo" src={FacebookLogo} alt="" />
         </Link>
-        <div className="header__leftSearch">
+        <div onClick={setShowSearchModalStatus} className="header__leftSearch">
           <SearchOutlinedIcon className="header__leftSearchIcon" />
           {variant != "shrinked" && (
-            <input
-              className="header__leftSearchInput"
-              type="text"
-              placeholder="Search Facebook"
-            />
+            <div className="header__leftSearchInput">
+              <p>Search facebook</p>
+            </div>
           )}
         </div>
       </div>
@@ -81,8 +83,6 @@ function Header({ variant }) {
         </div>
         <HeaderOptions />
       </div>
-      {modal === "notifications" && <NotificationsModal />}
-      {/* <NotificationsModal /> */}
     </div>
   );
 }

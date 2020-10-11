@@ -1,6 +1,7 @@
 .searchModal {
   min-height: 200px;
-  width: 300px;
+  padding: 0 10px;
+  /* width: 300px; */
   background-color: white;
   border: 1px solid lightgrey;
   position: absolute;
@@ -9,7 +10,8 @@
   z-index: 1;
 }
 .searchModal__headerBackIcon {
-  margin: 0 20px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 .searchModal__header {
   height: 60px;
@@ -26,4 +28,16 @@
 }
 .searchModal__headerSearchicon {
   color: grey;
+}
+.searchModal__headerSearch > input {
+  border: none;
+  outline: none;
+  margin-left: 5px;
+  height: 25px;
+  background-color: var(--fbbg);
+  font-size: 18px;
+}
+.searchModal__headerSearch > input::placeholder {
+  color: grey;
+  font-size: 18px;
 }

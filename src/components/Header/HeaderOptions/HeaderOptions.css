@@ -15,7 +15,7 @@
 .headerOptions__iconWrapper:hover {
   background-color: #dfdede;
 }
-.headerOptions__iconWrapper:active {
+.headerOptions__iconWrapper-active {
   background-color: #dcf3ff;
   color: var(--fbblue);
 }
