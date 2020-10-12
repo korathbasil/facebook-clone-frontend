@@ -10,9 +10,10 @@ function MyProfile() {
   useEffect(() => {
     axios
       .post("/user/getUser", {
-        userId: "5f7f19cc6210b1561207400c",
+        userId: "5f84a1c191ba2d433f07c1db",
       })
       .then((result) => {
+        console.log(result.data);
         dispatch({
           type: "SET_SELECTED_USER",
           user: result.data,

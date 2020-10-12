@@ -29,30 +29,17 @@ function Timeline({ photos, ownAccount }) {
               <p>See all</p>
             </div>
             <div className="timeline__bottomPhotosContainer">
-              {photos.map((photo) => {
-                return <img src={photo.src} alt="" />;
+              {selectedUser?.recentNinePhotos?.map((photo) => {
+                return <img src={photo.small} alt="" />;
               })}
-
-              <img
-                src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-                alt=""
-              />
-              <img
-                src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-                alt=""
-              />
-              <img
-                src="https://www.pandasecurity.com/mediacenter/src/uploads/2013/11/pandasecurity-facebook-photo-privacy.jpg"
-                alt=""
-              />
             </div>
           </div>
           <div className="timeline__bottomFriends">
             <h3>Friends</h3>
-            {selectedUser?.friends.length == 0 && <h3>No friends yet</h3>}
+            {selectedUser?.friends?.length == 0 && <h3>No friends yet</h3>}
             <p>17 mutual Friends</p>
             <div className="timeline__bottomFriendsContainer">
-              {selectedUser?.friends.map((friend) => {
+              {selectedUser?.friends?.map((friend) => {
                 return <FriendCard />;
               })}
             </div>
@@ -60,7 +47,20 @@ function Timeline({ photos, ownAccount }) {
         </div>
         <div className="timeline__bottomRight">
           <Upload />
-          <Post />
+          {selectedUser?.feed?.map((post) => (
+            <Post
+              id={post._id}
+              key={post._id}
+              displayName={post.author?.displayName}
+              avatar={post.author?.avatar}
+              postCaption={post.caption}
+              postImage={post.image?.medium}
+              likesCount={post.likesCount}
+              commentsCount={post.commentsCount}
+              sharesCount={post.sharesCount}
+              commentsDetails={post.comments}
+            />
+          ))}
         </div>
       </div>
     </div>
