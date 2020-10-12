@@ -50,7 +50,7 @@ function Profile({ ownAccount }) {
         <div className="profile__headerContainer">
           <div className="profile__headerCover">
             <img
-              src="https://cdn.pixabay.com/photo/2012/08/27/14/19/evening-55067__340.png"
+              src={selectedUser?.coverPicture?.coverPictureUrl}
               alt=""
               className="profile__headerCoverImage"
             />
@@ -166,7 +166,10 @@ function Profile({ ownAccount }) {
             alt=""
           /> */}
           <div className="profile__headerProfilePicture">
-            <Avatar style={{ width: 190, height: 190 }} />
+            <Avatar
+              src={selectedUser?.profilePicture?.profilePictureUrl}
+              style={{ width: 190, height: 190 }}
+            />
             {ownAccount && (
               <div className="profile__headerProfilePictureButton">
                 <CameraAltIcon />

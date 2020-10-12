@@ -27,7 +27,7 @@ function Feed({ overlayShowStatusHandler }) {
   return (
     <div className="feed">
       <Upload overlayShowStatusHandler={overlayShowStatusHandler} />
-      {posts.map((post) => {
+      {/* {posts.map((post) => {
         return (
           <Post
             id={post._id}
@@ -42,7 +42,7 @@ function Feed({ overlayShowStatusHandler }) {
             commentsDetails={post.comments}
           />
         );
-      })}
+      })} */}
       <Post />
     </div>
   );
