@@ -27,22 +27,22 @@ function Feed({ overlayShowStatusHandler }) {
   return (
     <div className="feed">
       <Upload overlayShowStatusHandler={overlayShowStatusHandler} />
-      {/* {posts.map((post) => {
+      {posts.map((post) => {
         return (
           <Post
             id={post._id}
             key={post._id}
-            displayName={post.author?.displayName}
-            avatar={post.author?.avatar}
+            displayName={post.authorId?.displayName}
+            avatar={post.authorId?.profilePicture?.profilePictureUrl}
             postCaption={post.caption}
-            postImage={post.image}
+            postImage={post.image?.medium}
             likesCount={post.likesCount}
             commentsCount={post.commentsCount}
             sharesCount={post.sharesCount}
             commentsDetails={post.comments}
           />
         );
-      })} */}
+      })}
       <Post />
     </div>
   );
