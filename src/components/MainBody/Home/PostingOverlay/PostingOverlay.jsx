@@ -39,6 +39,7 @@ function PostingOverlay({ overlayShowStatusHandler }) {
     e.preventDefault();
     formData.append("image", image);
     formData.append("folder", "TiimelinePhotos");
+    formData.append("userId", user?.id);
     formData.append("miniUserId", user?.miniUserId);
     formData.append("caption", postText);
     axios
