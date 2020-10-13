@@ -1,0 +1,8 @@
+.myProfile {
+  height: 100vh;
+  overflow: hidden;
+}
+.myProfile__profile {
+  height: calc(100% - 60px);
+  overflow: hidden;
+}

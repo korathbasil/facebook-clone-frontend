@@ -28,9 +28,15 @@ function Login() {
   const [DOByear, setDOByear] = useState("");
 
   useEffect(() => {
+    let mounted = true;
     if (token) {
-      history.push("/");
+      if (mounted) {
+        history.push("/");
+      }
     }
+    return () => {
+      mounted = false;
+    };
   }, [token]);
 
   const userLogin = async (e) => {

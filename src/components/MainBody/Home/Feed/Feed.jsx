@@ -3,6 +3,7 @@ import "./Feed.css";
 import Upload from "./Upload/Upload";
 import Post from "./Post/Post";
 import axios from "../../../../axios";
+import Axios from "axios";
 import useStateContext from "../../../../context/DataLayer";
 
 function Feed({ overlayShowStatusHandler }) {
@@ -10,11 +11,13 @@ function Feed({ overlayShowStatusHandler }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(async () => {
+    let source = Axios.CancelToken.source();
     axios
       .get("/user/getFeed", {
         headers: {
           "auth-token": token,
         },
+        cancelToken: source.token,
       })
       .then((result) => {
         console.log(result);
@@ -22,6 +25,9 @@ function Feed({ overlayShowStatusHandler }) {
         console.log(posts);
       })
       .catch((e) => console.log(e));
+    return () => {
+      source.cancel();
+    };
   }, []);
   console.log(posts);
   return (

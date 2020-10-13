@@ -8,18 +8,21 @@ import useStateContext from "./context/DataLayer";
 import Loading from "./components/Loadings/Loading";
 import openSocket from "socket.io-client";
 import axios from "./axios";
+import Axios from "axios";
 
 function App() {
   const [{ token, user, isLoading }, dispatch] = useStateContext();
   useEffect(() => {
+    let source = Axios.CancelToken.source();
     if (localStorage.getItem("token")) {
       const tokenFromStorage = localStorage.getItem("token");
-      console.log(tokenFromStorage);
+
       axios
         .get("/auth/validate", {
           headers: {
             "auth-token": tokenFromStorage,
           },
+          cancelToken: source.token,
         })
         .then((result) => {
           console.log(result);
@@ -41,10 +44,13 @@ function App() {
           });
         });
     }
+    return () => {
+      source.cancel();
+    };
   }, []);
-  useEffect(() => {
-    openSocket("http://localhost:8000");
-  }, []);
+  // useEffect(() => {
+  //   openSocket("http://localhost:8000");
+  // }, []);
   return (
     <div className="App">
       <Router>

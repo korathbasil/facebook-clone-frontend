@@ -27,26 +27,22 @@ function HeaderOptions() {
 
   return (
     <div className="headerOptions">
-      <ClickAwayListener onClickAway={modalCancel}>
-        <div
-          onClick={() => modalChangeHandler("add")}
-          className={`headerOptions__iconWrapper${
-            modal === "add" ? " headerOptions__iconWrapper-active" : ""
-          }`}
-        >
-          <AddOutlinedIcon style={{ fontSize: 22 }} />
-        </div>
-      </ClickAwayListener>
-      <ClickAwayListener onClickAway={modalCancel}>
-        <div
-          onClick={() => modalChangeHandler("messenger")}
-          className={`headerOptions__iconWrapper${
-            modal === "messenger" ? " headerOptions__iconWrapper-active" : ""
-          }`}
-        >
-          <ChatBubbleRoundedIcon style={{ fontSize: 22 }} />
-        </div>
-      </ClickAwayListener>
+      <div
+        onClick={() => modalChangeHandler("add")}
+        className={`headerOptions__iconWrapper${
+          modal === "add" ? " headerOptions__iconWrapper-active" : ""
+        }`}
+      >
+        <AddOutlinedIcon style={{ fontSize: 22 }} />
+      </div>
+      <div
+        onClick={() => modalChangeHandler("messenger")}
+        className={`headerOptions__iconWrapper${
+          modal === "messenger" ? " headerOptions__iconWrapper-active" : ""
+        }`}
+      >
+        <ChatBubbleRoundedIcon style={{ fontSize: 22 }} />
+      </div>
       <div
         onClick={() => modalChangeHandler("notifications")}
         className={`headerOptions__iconWrapper${
