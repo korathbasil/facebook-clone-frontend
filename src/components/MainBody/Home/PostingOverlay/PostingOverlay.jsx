@@ -1,19 +1,34 @@
 import React, { useState, useRef } from "react";
 import "./PostingOverlay.css";
 import Header from "../../../Header/Header";
-import CloseIcon from "@material-ui/icons/Close";
 import Avatar from "@material-ui/core/Avatar";
 import axios from "../../../../axios";
+// Material Ui imports
+import PhotoIcon from "@material-ui/icons/Photo";
+import PersonPinIcon from "@material-ui/icons/PersonPin";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import GifIcon from "@material-ui/icons/Gif";
+import CloseIcon from "@material-ui/icons/Close";
+import useStateContext from "../../../../context/DataLayer";
 
 function PostingOverlay({ overlayShowStatusHandler }) {
+  const [{ user }, dispatch] = useStateContext();
   const filePicker = useRef();
+  const postButton = useRef();
   const [image, setImage] = useState(null);
+  const [imagePath, setImagePath] = useState(null);
   let formData = new FormData();
   const selectFile = (e) => {
     if (e.target.files[0]) {
+      setImagePath(URL.createObjectURL(e.target.files[0]));
       setImage(e.target.files[0]);
-      console.log(formData);
     }
+  };
+  const removeSelectedImage = () => {
+    setImage(null);
+    setImagePath(null);
+    filePicker.current.value = "";
   };
   const uploadFile = (e) => {
     e.preventDefault();
@@ -38,26 +53,55 @@ function PostingOverlay({ overlayShowStatusHandler }) {
           </div>
         </div>
         <div className="pip__info">
-          <Avatar />
-          <p>Bazil Korath</p>
+          <Avatar
+            src={user?.profilePicture?.profilePictureUrl}
+            style={{ marginRight: 10 }}
+          />
+          <p>{user?.displayName}</p>
         </div>
         <form action="" onSubmit={uploadFile}>
+          <textarea
+            type="text"
+            className="pip__postContent"
+            placeholder={`Whats on your mind, ${
+              user?.displayName.split(" ")[0]
+            }?`}
+          />
+          <div className="pip__postAdd">
+            <p>Add to your post</p>
+            <div className="pip__postAddRight">
+              <PhotoIcon
+                onClick={() => document.getElementById("filePicker").click()}
+                style={{ fontSize: 30, color: "green" }}
+              />
+              <PersonPinIcon style={{ fontSize: 30, color: "blue" }} />
+              <InsertEmoticonIcon style={{ fontSize: 30, color: "yellow" }} />
+              <LocationOnIcon style={{ fontSize: 30, color: "red" }} />
+              <GifIcon style={{ fontSize: 30, color: "orange" }} />
+            </div>
+          </div>
+          {imagePath && (
+            <img className="pip__formSelectedImage" src={imagePath} />
+          )}
+          {imagePath && (
+            <div
+              onClick={removeSelectedImage}
+              className="pip__formSelectedImageDelete"
+            >
+              <CloseIcon />
+            </div>
+          )}
           <input
+            ref={filePicker}
             id="filePicker"
             type="file"
             onChange={selectFile}
             encType="multipart/form-data"
           />
-          <button type="submit">Upload</button>
+          <button disabled className="pip__formButton" type="submit">
+            Post
+          </button>
         </form>
-        <textarea
-          onClick={() => document.getElementById("filePicker").click()}
-          type="text"
-          className="pip__postContent"
-          placeholder="Whats on your mind, Bazil?"
-        />
-        <input type="text" placeholder="image" />
-        {/* <input type="file" /> */}
       </div>
     </div>
   );
