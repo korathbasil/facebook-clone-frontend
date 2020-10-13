@@ -1,6 +1,7 @@
 .feed {
+  padding-top: 20px;
   width: 600px;
-  height: 87vh;
+  height: calc(100vh - 60px);
   overflow-y: scroll;
 }
 .feed::-webkit-scrollbar {

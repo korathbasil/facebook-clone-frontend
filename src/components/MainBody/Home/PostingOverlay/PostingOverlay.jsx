@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./PostingOverlay.css";
 import Header from "../../../Header/Header";
 import CloseIcon from "@material-ui/icons/Close";
@@ -6,20 +6,18 @@ import Avatar from "@material-ui/core/Avatar";
 import axios from "../../../../axios";
 
 function PostingOverlay({ overlayShowStatusHandler }) {
+  const filePicker = useRef();
   const [image, setImage] = useState(null);
   let formData = new FormData();
-  const x = "gvbghuvbhbvhb";
   const selectFile = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
-      formData.append("image", image);
-      // console.log(formData[0]);
+      console.log(formData);
     }
   };
   const uploadFile = (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log(image);
+    formData.append("image", image);
     axios
       .post("/testFile", formData, {
         headers: {
@@ -45,6 +43,7 @@ function PostingOverlay({ overlayShowStatusHandler }) {
         </div>
         <form action="" onSubmit={uploadFile}>
           <input
+            id="filePicker"
             type="file"
             onChange={selectFile}
             encType="multipart/form-data"
@@ -52,6 +51,7 @@ function PostingOverlay({ overlayShowStatusHandler }) {
           <button type="submit">Upload</button>
         </form>
         <textarea
+          onClick={() => document.getElementById("filePicker").click()}
           type="text"
           className="pip__postContent"
           placeholder="Whats on your mind, Bazil?"

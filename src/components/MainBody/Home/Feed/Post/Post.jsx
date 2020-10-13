@@ -62,9 +62,11 @@ function Post({
             <MoreHorizIcon />
           </div>
         </div>
-        <div className="post__topText">
-          <p>{postCaption}</p>
-        </div>
+        {postCaption != "" && (
+          <div className="post__topText">
+            <p>{postCaption}</p>
+          </div>
+        )}
       </div>
       <img className="post__Image" src={postImage} alt="" />
       <div className="post__bottom">

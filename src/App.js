@@ -43,10 +43,10 @@ function App() {
             isLoading: false,
           });
         });
+      return () => {
+        source.cancel();
+      };
     }
-    return () => {
-      source.cancel();
-    };
   }, []);
   // useEffect(() => {
   //   openSocket("http://localhost:8000");

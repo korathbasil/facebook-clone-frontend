@@ -1,5 +1,6 @@
 .sidebar {
   margin: 0 10px;
+  margin-top: 10px;
   width: 300px;
 }
 .sidebar > a {
