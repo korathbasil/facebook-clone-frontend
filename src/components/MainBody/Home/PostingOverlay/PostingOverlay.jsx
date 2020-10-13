@@ -16,6 +16,7 @@ function PostingOverlay({ overlayShowStatusHandler }) {
   const [{ user }, dispatch] = useStateContext();
   const filePicker = useRef();
   const postButton = useRef();
+  const [postText, setPostText] = useState("");
   const [image, setImage] = useState(null);
   const [imagePath, setImagePath] = useState(null);
   let formData = new FormData();
@@ -23,23 +24,30 @@ function PostingOverlay({ overlayShowStatusHandler }) {
     if (e.target.files[0]) {
       setImagePath(URL.createObjectURL(e.target.files[0]));
       setImage(e.target.files[0]);
+      postButton.current.disabled = false;
     }
   };
   const removeSelectedImage = () => {
     setImage(null);
     setImagePath(null);
     filePicker.current.value = "";
+    if (postText === "") {
+      postButton.current.disabled = true;
+    }
   };
   const uploadFile = (e) => {
     e.preventDefault();
     formData.append("image", image);
+    formData.append("folder", "TiimelinePhotos");
+    formData.append("miniUserId", user?.miniUserId);
+    formData.append("caption", postText);
     axios
-      .post("/testFile", formData, {
+      .post("/post/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((result) => console.log(result))
+      .then((result) => overlayShowStatusHandler())
       .catch((e) => console.log(e));
   };
   return (
@@ -61,6 +69,15 @@ function PostingOverlay({ overlayShowStatusHandler }) {
         </div>
         <form action="" onSubmit={uploadFile}>
           <textarea
+            onChange={(e) => {
+              setPostText(e.target.value);
+              if (e.target.value === "" && filePicker.current.value === "") {
+                postButton.current.disabled = true;
+              } else {
+                postButton.current.disabled = false;
+              }
+            }}
+            value={postText}
             type="text"
             className="pip__postContent"
             placeholder={`Whats on your mind, ${
@@ -98,7 +115,12 @@ function PostingOverlay({ overlayShowStatusHandler }) {
             onChange={selectFile}
             encType="multipart/form-data"
           />
-          <button disabled className="pip__formButton" type="submit">
+          <button
+            ref={postButton}
+            disabled
+            className="pip__formButton"
+            type="submit"
+          >
             Post
           </button>
         </form>
