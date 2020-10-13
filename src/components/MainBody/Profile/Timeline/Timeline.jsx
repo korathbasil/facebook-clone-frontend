@@ -51,8 +51,8 @@ function Timeline({ photos, ownAccount }) {
             <Post
               id={post._id}
               key={post._id}
-              displayName={post.authorId?.displayName}
-              avatar={post.authorId?.profilePicture?.profilePictureUrl}
+              displayName={post.miniAuthorId?.displayName}
+              avatar={post.miniAuthorId?.profilePicture?.profilePictureUrl}
               postCaption={post.caption}
               postImage={post.image?.medium}
               likesCount={post.likesCount}

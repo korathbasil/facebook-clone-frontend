@@ -38,7 +38,7 @@ function PostingOverlay({ overlayShowStatusHandler }) {
   const uploadFile = (e) => {
     e.preventDefault();
     formData.append("image", image);
-    formData.append("folder", "TiimelinePhotos");
+    formData.append("folder", "timelinePhotos");
     formData.append("userId", user?.id);
     formData.append("miniUserId", user?.miniUserId);
     formData.append("caption", postText);

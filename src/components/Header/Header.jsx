@@ -13,8 +13,6 @@ import StorefrontOutlinedIcon from "@material-ui/icons/StorefrontOutlined";
 import GroupWorkOutlinedIcon from "@material-ui/icons/GroupWorkOutlined";
 import GamesOutlinedIcon from "@material-ui/icons/GamesOutlined";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
-import IconButton from "@material-ui/core/IconButton";
-
 import Avatar from "@material-ui/core/Avatar";
 
 function Header({ variant }) {
@@ -78,7 +76,10 @@ function Header({ variant }) {
       </div>
       <div className="header__right">
         <div className="header__rightAccount">
-          <Avatar src={user?.avatar} style={{ width: 30, height: 30 }} />
+          <Avatar
+            src={user?.profilePicture?.profilePictureUrl}
+            style={{ width: 30, height: 30 }}
+          />
           <h4>{firstName}</h4>
         </div>
         <HeaderOptions />

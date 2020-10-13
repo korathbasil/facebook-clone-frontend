@@ -7,13 +7,13 @@ import Axios from "axios";
 import useStateContext from "../../../context/DataLayer";
 
 function MyProfile() {
-  const [{ selectedUser }, dispatch] = useStateContext();
+  const [{ selectedUser, user }, dispatch] = useStateContext();
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
     axios
       .post("/user/getUser", {
-        userId: "5f84a1c191ba2d433f07c1db",
+        userId: user?.id,
         CancelToken: source.token,
       })
       .then((result) => {
