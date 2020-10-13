@@ -10,7 +10,7 @@ function Feed({ overlayShowStatusHandler }) {
   const [{ token }, dispatch] = useStateContext();
   const [posts, setPosts] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     let source = Axios.CancelToken.source();
     axios
       .get("/user/getFeed", {
@@ -20,9 +20,9 @@ function Feed({ overlayShowStatusHandler }) {
         cancelToken: source.token,
       })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setPosts(result.data);
-        console.log(posts);
+        // console.log(posts);
       })
       .catch((e) => console.log(e));
     return () => {
