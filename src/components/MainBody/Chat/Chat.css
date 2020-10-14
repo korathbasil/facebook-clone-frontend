@@ -43,13 +43,20 @@
 }
 .chat__body {
   flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
 }
 .chat__foot {
   border-top: 1px solid lightgrey;
   padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  color: var(--fbblue);
 }
 .chat__foot > form {
   display: flex;
+  flex: 1;
+  margin-left: 10px;
 }
 .chat__foot > form > button {
   display: none;

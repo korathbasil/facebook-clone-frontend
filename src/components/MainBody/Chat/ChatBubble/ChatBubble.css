@@ -2,3 +2,8 @@
   border-radius: 999px;
   position: absolute;
 }
+.chatBubble__info {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+}
