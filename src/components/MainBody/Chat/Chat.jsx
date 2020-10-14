@@ -1,5 +1,7 @@
 import React from "react";
 import "./Chat.css";
+import useStateContext from "../../../context/DataLayer";
+
 // Material UI imports
 import Avatar from "@material-ui/core/Avatar";
 import CloseIcon from "@material-ui/icons/Close";
@@ -8,6 +10,7 @@ import ImageIcon from "@material-ui/icons/Image";
 import Message from "./Message/Message";
 
 function Chat() {
+  const [{ chatBoxOpen }, dispatch] = useStateContext();
   return (
     <div className="chat">
       <div className="chat__head">
@@ -20,7 +23,15 @@ function Chat() {
             <RemoveIcon style={{ fontSize: 30 }} />
           </div>
           <div className="chat__headRightIcon">
-            <CloseIcon style={{ fontSize: 30 }} />
+            <CloseIcon
+              onClick={() => {
+                dispatch({
+                  type: "SET_CHAT_BOX_OPEN",
+                  open: false,
+                });
+              }}
+              style={{ fontSize: 30 }}
+            />
           </div>
         </div>
       </div>

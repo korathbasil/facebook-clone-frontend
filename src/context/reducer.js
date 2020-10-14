@@ -3,6 +3,7 @@ export const initialState = {
   selectedUser: null,
   token: null,
   isLoading: true,
+  chatBoxOpen: false,
 };
 
 export const reducer = (state, action) => {
@@ -28,6 +29,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         selectedUser: action.user,
+      };
+    case "SET_CHAT_BOX_OPEN":
+      return {
+        ...state,
+        chatBoxOpen: action.open,
       };
   }
 };
