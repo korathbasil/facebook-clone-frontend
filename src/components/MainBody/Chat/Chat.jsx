@@ -26,6 +26,19 @@ function Chat() {
       </div>
       <div className="chat__body">
         <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+
+        <Message />
+        <Message />
+        <Message />
       </div>
       <div className="chat__foot">
         <ImageIcon />
