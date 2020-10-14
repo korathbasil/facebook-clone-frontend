@@ -5,6 +5,8 @@ import Home from "./Home/Home";
 import Watch from "./Watch/Watch";
 import Friends from "./Friends/Friends";
 import MyProfile from "./MyProfile/MyProfile";
+import Chat from "./Chat/Chat";
+import ChatBubble from "./Chat/ChatBubble/ChatBubble";
 
 function MainBody() {
   return (
@@ -16,6 +18,12 @@ function MainBody() {
         <Route exact path="/friends" component={Friends} />
         <Route exact path="/profile" component={MyProfile} />
       </Switch>
+      <div className="mainBody__chatBubblesContainer">
+        <ChatBubble />
+        <ChatBubble />
+        <ChatBubble />
+      </div>
+      <Chat />
     </div>
   );
 }
