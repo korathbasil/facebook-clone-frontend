@@ -1,9 +1,66 @@
 .chat {
-  height: 400px;
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  width: 350px;
   border-radius: 5px;
   background-color: white;
   position: absolute;
   bottom: 10px;
-  right: 200px;
+  right: 150px;
+}
+.chat__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+.chat__headLeft {
+  display: flex;
+  align-items: center;
+}
+.chat__headLeft > p {
+  margin-left: 10px;
+  font-weight: 800;
+  font-size: 18px;
+}
+.chat__headRight {
+  display: flex;
+  align-items: center;
+}
+.chat__headRightIcon {
+  margin-left: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: var(--fbblue);
+  cursor: pointer;
+}
+.chat__headRightIcon:hover {
+  background-color: rgba(211, 211, 211, 0.359);
+}
+.chat__body {
+  flex: 1;
+}
+.chat__foot {
+  border-top: 1px solid lightgrey;
+  padding: 5px 10px;
+}
+.chat__foot > form {
+  display: flex;
+}
+.chat__foot > form > button {
+  display: none;
+}
+.chat__foot > form > input {
+  outline: none;
+  border: none;
+  height: 30px;
+  background-color: var(--fbbg);
+  border-radius: 20px;
+  flex: 1;
+  font-size: 16px;
+  padding: 0 10px;
 }

@@ -22,6 +22,14 @@ function MainBody() {
         <ChatBubble />
         <ChatBubble />
         <ChatBubble />
+        <ChatBubble />
+        <ChatBubble />
+        <ChatBubble />
+        <ChatBubble />
+
+        <ChatBubble />
+        <ChatBubble />
+        <ChatBubble />
       </div>
       <Chat />
     </div>
