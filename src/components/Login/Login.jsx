@@ -6,8 +6,7 @@ import FBLogo from "./facebook-logo.png";
 import useStateContext from "../../context/DataLayer";
 // Materila UI elements
 import CloseIcon from "@material-ui/icons/Close";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import LoadingCircle from "../LoadingCircle/LoadingCircle";
+import FBLoading from "../FBLoading";
 
 function Login() {
   const [{ token }, dispatch] = useStateContext();
@@ -99,8 +98,7 @@ function Login() {
           </h2>
         </div>
         <div className="login__right">
-          {/* <CircularProgress color="primary" /> */}
-          {/* <LoadingCircle /> */}
+          <FBLoading />
           <form className="login__rightForm">
             <input
               value={loginEmail}
