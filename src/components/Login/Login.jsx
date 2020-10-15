@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import axios from "../../axios";
 import "./Login.css";
@@ -9,7 +9,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import FBLoading from "../FBLoading/FBLoading";
 
 function Login() {
-  const [loader, setLoader] = useState(false);
+  const loginButton = useRef();
+  const signupButton = useRef();
+  const [loginLoader, setLoginLoader] = useState(false);
+  const [signupLoader, setSignupLoader] = useState(false);
   const [{ token }, dispatch] = useStateContext();
   const history = useHistory();
   const [signupFormOpenStatus, setSignupFormOpenStatus] = useState(false);
@@ -41,9 +44,9 @@ function Login() {
 
   const userLogin = async (e) => {
     e.preventDefault();
-    setLoader(true);
+    setLoginLoader(true);
     setTimeout(() => {
-      setLoader(false);
+      setLoginLoader(false);
     }, 2000);
     // await axios
     //   .post("/auth/login", {
@@ -64,27 +67,31 @@ function Login() {
   };
   const userSignup = async (e) => {
     e.preventDefault();
-    const date = new Date(DOByear + "-" + DOBmonth + "-" + DOBday);
-    const displayName = firstName + " " + lastName;
-    console.log(date);
-    await axios
-      .put("/auth/signup", {
-        displayName: displayName,
-        email: signupEmail,
-        password: signupPassword,
-        gender: gender,
-        DOB: date,
-      })
-      .then((res) => {
-        dispatch({
-          type: "SET_USER",
-          user: res.data,
-        });
-        localStorage.setItem("token", res.data.token);
-        setFirstName("");
-        Redirect("/");
-      })
-      .catch((e) => console.log(e.message));
+    setSignupLoader(true);
+    setTimeout(() => {
+      setSignupLoader(false);
+    }, 2000);
+    // const date = new Date(DOByear + "-" + DOBmonth + "-" + DOBday);
+    // const displayName = firstName + " " + lastName;
+    // console.log(date);
+    // await axios
+    //   .put("/auth/signup", {
+    //     displayName: displayName,
+    //     email: signupEmail,
+    //     password: signupPassword,
+    //     gender: gender,
+    //     DOB: date,
+    //   })
+    //   .then((res) => {
+    //     dispatch({
+    //       type: "SET_USER",
+    //       user: res.data,
+    //     });
+    //     localStorage.setItem("token", res.data.token);
+    //     setFirstName("");
+    //     Redirect("/");
+    //   })
+    //   .catch((e) => console.log(e.message));
   };
   const openSignupForm = () => {
     setSignupFormOpenStatus(true);
@@ -103,7 +110,7 @@ function Login() {
           </h2>
         </div>
         <div className="login__right">
-          <form className="login__rightForm">
+          <form onSubmit={userLogin} className="login__rightForm">
             <input
               value={loginEmail}
               onChange={(e) => setLoginEmail(e.target.value)}
@@ -116,10 +123,18 @@ function Login() {
               type="passsword"
               placeholder="Password"
             />
-            <button onClick={userLogin} type="submit">
-              {!loader && <div className="button__div">Login</div>}
-              {loader && <FBLoading col="white" len="30px" />}
-            </button>
+            <div
+              onClick={() => {
+                loginButton.current.click();
+              }}
+              className="login__rightFormButton"
+            >
+              {!loginLoader && <p> Login</p>}
+              {loginLoader && <FBLoading col="white" len="30px" />}
+              <button ref={loginButton} type="submit">
+                Login
+              </button>
+            </div>
           </form>
           <p>Forgotten password?</p>
           <div className="login__rightBottom">
@@ -140,7 +155,7 @@ function Login() {
               </div>
             </div>
             <div className="login__signupBottom">
-              <form className="login__signupForm">
+              <form onSubmit={userSignup} className="login__signupForm">
                 <div className="login__signupFormNamesContainer">
                   <input
                     value={firstName}
@@ -303,7 +318,18 @@ function Login() {
                   Cookie Policy. You may receive SMS notifications from us and
                   can opt out at any time.
                 </p>
-                <button onClick={userSignup}>Sign Up</button>
+                <div
+                  onClick={() => {
+                    signupButton.current.click();
+                  }}
+                  className="login__signupFormButton"
+                >
+                  {!signupLoader && <p>Sign up</p>}
+                  {signupLoader && <FBLoading len="30px" col="white" />}
+                  <button ref={signupButton} type="submit">
+                    Sign Up
+                  </button>
+                </div>
               </form>
             </div>
           </div>
