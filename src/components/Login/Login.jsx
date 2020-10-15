@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import axios from "../../axios";
 import "./Login.css";
 import FBLogo from "./facebook-logo.png";
@@ -47,7 +47,6 @@ function Login() {
         password: loginPassword,
       })
       .then((res) => {
-        console.log(res.data.token);
         dispatch({
           type: "SET_USER",
           user: res.data,
@@ -72,7 +71,15 @@ function Login() {
         gender: gender,
         DOB: date,
       })
-      .then((res) => alert(res.data))
+      .then((res) => {
+        dispatch({
+          type: "SET_USER",
+          user: res.data,
+        });
+        localStorage.setItem("token", res.data.token);
+        setFirstName("");
+        Redirect("/");
+      })
       .catch((e) => console.log(e.message));
   };
   const openSignupForm = () => {

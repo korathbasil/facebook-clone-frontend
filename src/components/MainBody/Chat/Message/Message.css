@@ -1,0 +1,20 @@
+.message {
+  display: flex;
+  justify-content: space-between;
+}
+.message__others {
+  display: flex;
+  align-items: center;
+}
+.message__others > p {
+  padding: 10px;
+  margin-left: 5px;
+  border-radius: 20px;
+  background-color: var(--fbbg);
+}
+.message__own > p {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: var(--fbblue);
+  color: white;
+}
