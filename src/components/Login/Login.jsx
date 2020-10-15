@@ -6,9 +6,10 @@ import FBLogo from "./facebook-logo.png";
 import useStateContext from "../../context/DataLayer";
 // Materila UI elements
 import CloseIcon from "@material-ui/icons/Close";
-import FBLoading from "../FBLoading";
+import FBLoading from "../FBLoading/FBLoading";
 
 function Login() {
+  const [loader, setLoader] = useState(false);
   const [{ token }, dispatch] = useStateContext();
   const history = useHistory();
   const [signupFormOpenStatus, setSignupFormOpenStatus] = useState(false);
@@ -40,22 +41,26 @@ function Login() {
 
   const userLogin = async (e) => {
     e.preventDefault();
-    await axios
-      .post("/auth/login", {
-        email: loginEmail,
-        password: loginPassword,
-      })
-      .then((res) => {
-        dispatch({
-          type: "SET_USER",
-          user: res.data,
-        });
-        localStorage.setItem("token", res.data.token);
-        setLoginEmail("");
-        setLoginPassword("");
-        history.push("/");
-      })
-      .catch((e) => alert(e.error));
+    setLoader(true);
+    setTimeout(() => {
+      setLoader(false);
+    }, 2000);
+    // await axios
+    //   .post("/auth/login", {
+    //     email: loginEmail,
+    //     password: loginPassword,
+    //   })
+    //   .then((res) => {
+    //     dispatch({
+    //       type: "SET_USER",
+    //       user: res.data,
+    //     });
+    //     localStorage.setItem("token", res.data.token);
+    //     setLoginEmail("");
+    //     setLoginPassword("");
+    //     history.push("/");
+    //   })
+    //   .catch((e) => alert(e.error));
   };
   const userSignup = async (e) => {
     e.preventDefault();
@@ -98,7 +103,6 @@ function Login() {
           </h2>
         </div>
         <div className="login__right">
-          <FBLoading />
           <form className="login__rightForm">
             <input
               value={loginEmail}
@@ -113,7 +117,8 @@ function Login() {
               placeholder="Password"
             />
             <button onClick={userLogin} type="submit">
-              Log in
+              {!loader && <div className="button__div">Login</div>}
+              {loader && <FBLoading col="white" len="30px" />}
             </button>
           </form>
           <p>Forgotten password?</p>
