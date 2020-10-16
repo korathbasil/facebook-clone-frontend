@@ -15,12 +15,16 @@ function ValidLogin({ errors }) {
             <h3>Login as Bazil Korath</h3>
             <p>korathbasil@email.com Not you?</p>
           </div>
-          {errors?.email && <p>{errors.email}</p>}
-          {errors?.password && <p>{errors.password}</p>}
           <div className="VL__formContainer">
             <form action="">
               <input type="email" />
+              <div className="VL__formEmailErrorText">
+                {errors?.email && <p>{errors.email}</p>}
+              </div>
               <input type="password" />
+              <div className="VL__formPasswordErrorText">
+                {errors?.password && <p>{errors.password}</p>}
+              </div>
               <button type="submit">Login</button>
             </form>
           </div>
