@@ -3,7 +3,7 @@ import "./FBLoading.css";
 
 function FBLoading({ col, len }) {
   return (
-    <div class="FBLoading">
+    <div className="FBLoading">
       <div className="FBLoading__box"></div>
       <div className="FBLoading__box"></div>
       <div className="FBLoading__box"></div>

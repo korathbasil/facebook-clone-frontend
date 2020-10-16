@@ -1,0 +1,23 @@
+.validLogin {
+  width: 100vw;
+  height: 100vh;
+}
+.VL__contents {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.VL__contents > img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+.VL__container {
+  border-radius: 10px;
+  background-color: white;
+  width: 300px;
+  height: 400px;
+}
