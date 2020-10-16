@@ -26,6 +26,9 @@ function ValidLogin({ errors }) {
                 {errors?.password && <p>{errors.password}</p>}
               </div>
               <button type="submit">Login</button>
+              <div className="VL__formLoginButton">
+                <p>Log in</p>
+              </div>
             </form>
           </div>
         </div>
