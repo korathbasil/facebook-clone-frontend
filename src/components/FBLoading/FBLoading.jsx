@@ -7,7 +7,7 @@ function FBLoading({ col, len }) {
       <div className="FBLoading__box"></div>
       <div className="FBLoading__box"></div>
       <div className="FBLoading__box"></div>
-      <style jsx>{`
+      <style>{`
         .FBLoading {
           width: ${len};
           height: ${len};
