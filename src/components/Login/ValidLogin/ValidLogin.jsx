@@ -17,6 +17,13 @@ function ValidLogin({ errors }) {
           </div>
           {errors?.email && <p>{errors.email}</p>}
           {errors?.password && <p>{errors.password}</p>}
+          <div className="VL__formContainer">
+            <form action="">
+              <input type="email" />
+              <input type="password" />
+              <button type="submit">Login</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

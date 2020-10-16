@@ -28,7 +28,6 @@ function App() {
           console.log(result);
           dispatch({
             type: "SET_USER",
-            user: result.data,
           });
           dispatch({
             type: "SET_TOKEN",
