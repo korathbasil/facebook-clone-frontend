@@ -77,7 +77,7 @@ function Login() {
             token: res.data.token,
           });
           localStorage.setItem("token", res.data.token);
-          getSocket.emit("login", { name: "Jazil" });
+          getSocket().emit("login", { name: "Jazil" });
           setLoginEmail("");
           setLoginPassword("");
           history.push("/");
