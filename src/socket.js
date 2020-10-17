@@ -7,9 +7,7 @@ export const initSocket = () => {
 };
 
 const getSocket = () => {
-  if (socket) {
-    return socket;
-  }
+  return socket;
 };
 
 export default getSocket;
