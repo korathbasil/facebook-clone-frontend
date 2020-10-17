@@ -6,13 +6,14 @@ import Login from "./components/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import useStateContext from "./context/DataLayer";
 import Loading from "./components/Loadings/Loading";
-import openSocket from "socket.io-client";
+import socket, { initSocket } from "./socket";
 import axios from "./axios";
 import Axios from "axios";
 
 function App() {
   const [{ token, user, isLoading }, dispatch] = useStateContext();
   useEffect(() => {
+    initSocket();
     let source = Axios.CancelToken.source();
     if (localStorage.getItem("token")) {
       const tokenFromStorage = localStorage.getItem("token");
@@ -34,6 +35,10 @@ function App() {
             token: tokenFromStorage,
             isLoading: false,
           });
+          // dispatch({
+          //   type: "SET_LOADING",
+          //   isLoading: false,
+          // });
           console.log(result);
         })
         .catch((e) => {
@@ -47,9 +52,7 @@ function App() {
       };
     }
   }, []);
-  useEffect(() => {
-    openSocket("http://localhost:8000");
-  }, []);
+
   return (
     <div className="App">
       <Router>

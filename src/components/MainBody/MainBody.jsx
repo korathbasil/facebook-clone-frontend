@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./MainBody.css";
+import openSocket from "socket.io-client";
 import Home from "./Home/Home";
 import Watch from "./Watch/Watch";
 import Friends from "./Friends/Friends";

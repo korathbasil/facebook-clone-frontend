@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import axios from "../../axios";
+import getSocket from "../../socket";
 import "./Login.css";
 import FBLogo from "./facebook-logo.png";
 import ValidLogin from "./ValidLogin/ValidLogin";
@@ -76,6 +77,7 @@ function Login() {
             token: res.data.token,
           });
           localStorage.setItem("token", res.data.token);
+          getSocket.emit("login", { name: "Jazil" });
           setLoginEmail("");
           setLoginPassword("");
           history.push("/");
