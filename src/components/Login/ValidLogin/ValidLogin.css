@@ -18,7 +18,7 @@
 .VL__container {
   border-radius: 10px;
   background-color: white;
-  width: 400px;
+  width: 370px;
   height: 400px;
 }
 .VL__top {
@@ -34,19 +34,39 @@
   padding: 10px;
   width: 100%;
 }
-.VL__formContainer > form > input {
+.VL__formEmailInput,
+.VL__formPasswordInput {
   width: 100%;
   height: 40px;
   border-radius: 10px;
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   outline: none;
 }
 .VL__formEmailErrorText,
 .VL__formPasswordErrorText {
   height: 20px;
+  display: flex;
+  align-items: center;
 }
 .VL__formEmailErrorText > p,
 .VL__formPasswordErrorText > p {
   font-size: 14px;
   color: red;
+}
+.VL__formContainer > form > button {
+  display: none;
+}
+.VL__formLoginButton {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--fbblue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.VL__formLoginButton > p {
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
 }

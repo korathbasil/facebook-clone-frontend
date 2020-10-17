@@ -20,7 +20,7 @@ function Header({ variant }) {
   const [firstName, setFirstName] = useState("");
   const [showSearchModal, setShowSearchModal] = useState(false);
   useEffect(() => {
-    let firstName = user.displayName.split(" ")[0];
+    let firstName = user?.displayName.split(" ")[0];
     setFirstName(firstName);
   }, []);
   const setShowSearchModalStatus = () => {

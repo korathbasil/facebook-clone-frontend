@@ -47,9 +47,9 @@ function App() {
       };
     }
   }, []);
-  // useEffect(() => {
-  //   openSocket("http://localhost:8000");
-  // }, []);
+  useEffect(() => {
+    openSocket("http://localhost:8000");
+  }, []);
   return (
     <div className="App">
       <Router>

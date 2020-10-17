@@ -12,7 +12,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
-        token: action.user.token,
+        token: action.token,
       };
     case "SET_TOKEN":
       return {

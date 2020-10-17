@@ -66,12 +66,14 @@ function Login() {
             setErrors({ email: res.data.message });
           } else if (res.data.message.includes("password")) {
             setErrors({ password: res.data.message });
+            console.log(res.data.message);
           }
           setValidLoginStatus(true);
         } else {
           dispatch({
             type: "SET_USER",
             user: res.data,
+            token: res.data.token,
           });
           localStorage.setItem("token", res.data.token);
           setLoginEmail("");

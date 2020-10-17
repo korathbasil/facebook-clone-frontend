@@ -17,11 +17,11 @@ function ValidLogin({ errors }) {
           </div>
           <div className="VL__formContainer">
             <form action="">
-              <input type="email" />
+              <input className="VL__formEmailInput" type="email" />
               <div className="VL__formEmailErrorText">
                 {errors?.email && <p>{errors.email}</p>}
               </div>
-              <input type="password" />
+              <input className="VL__formPasswordInput" type="password" />
               <div className="VL__formPasswordErrorText">
                 {errors?.password && <p>{errors.password}</p>}
               </div>
@@ -33,6 +33,13 @@ function ValidLogin({ errors }) {
           </div>
         </div>
       </div>
+      <style>
+        {`
+          .VL__formEmailInput {
+            border: 1px solid red;
+          }
+        `}
+      </style>
     </div>
   );
 }

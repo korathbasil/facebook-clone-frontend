@@ -6,7 +6,7 @@ import Upload from "../../Home/Feed/Upload/Upload";
 import useStateContext from "../../../../context/DataLayer";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
-function Timeline({ photos, ownAccount }) {
+function Timeline({ ownAccount }) {
   const [{ selectedUser }, dispatch] = useStateContext();
   return (
     <div className="timeline">

@@ -17,43 +17,20 @@ function Profile({ ownAccount }) {
   const [{ selectedUser }, dispatch] = useStateContext();
 
   const [activeTab, setActiveTab] = useState("timeline");
-  const [photos, setPhotos] = useState([
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-    {
-      src: "https://www.kidzvalley.in/storage/2020/05/71hn7-p46L._SL1500_.jpg",
-    },
-  ]);
+
   // console.log(user);
   return (
     <div className="profile">
       <div className="profile__header">
         <div className="profile__headerContainer">
           <div className="profile__headerCover">
-            <img
-              src={selectedUser?.coverPicture?.coverPictureUrl}
-              alt=""
-              className="profile__headerCoverImage"
-            />
+            {selectedUser?.coverPicture?.coverPictureUrl != "" && (
+              <img
+                src={selectedUser?.coverPicture?.coverPictureUrl}
+                alt=""
+                className="profile__headerCoverImage"
+              />
+            )}
             {ownAccount && (
               <div className="profile__headerCoverButton">
                 <CameraAltIcon />
@@ -179,9 +156,7 @@ function Profile({ ownAccount }) {
         </div>
       </div>
       <div className="profile__bottomBody">
-        {activeTab === "timeline" && (
-          <Timeline photos={photos} ownAccount={ownAccount} />
-        )}
+        {activeTab === "timeline" && <Timeline ownAccount={ownAccount} />}
         {activeTab === "friends" && <ProfileFriends />}
       </div>
     </div>
