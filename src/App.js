@@ -6,7 +6,7 @@ import Login from "./components/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import useStateContext from "./context/DataLayer";
 import Loading from "./components/Loadings/Loading";
-import socket, { initSocket } from "./socket";
+import getSocket, { initSocket } from "./socket";
 import axios from "./axios";
 import Axios from "axios";
 
@@ -17,7 +17,7 @@ function App() {
     let source = Axios.CancelToken.source();
     if (localStorage.getItem("token")) {
       const tokenFromStorage = localStorage.getItem("token");
-
+      console.log("object");
       axios
         .get("/auth/validate", {
           headers: {
@@ -29,17 +29,15 @@ function App() {
           console.log(result);
           dispatch({
             type: "SET_USER",
+            user: result.data,
           });
           dispatch({
             type: "SET_TOKEN",
             token: tokenFromStorage,
             isLoading: false,
           });
-          // dispatch({
-          //   type: "SET_LOADING",
-          //   isLoading: false,
-          // });
-          console.log(result);
+          getSocket().emit("login", { userId: result.data.id });
+          // console.log(result);
         })
         .catch((e) => {
           dispatch({
@@ -50,6 +48,11 @@ function App() {
       return () => {
         source.cancel();
       };
+    } else {
+      dispatch({
+        type: "SET_LOADING",
+        isLoading: false,
+      });
     }
   }, []);
 
