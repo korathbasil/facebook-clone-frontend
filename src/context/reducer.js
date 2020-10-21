@@ -34,7 +34,7 @@ export const reducer = (state, action) => {
     case "ADD_POST":
       return {
         ...state,
-        posts: [...state.posts, action.post],
+        posts: [action.post, ...state.posts],
       };
     case "SET_SELECTED_USER":
       return {

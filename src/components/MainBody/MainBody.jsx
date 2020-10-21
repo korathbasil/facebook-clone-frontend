@@ -18,7 +18,6 @@ function MainBody() {
       getSocket().emit("join-to-new-user", data);
     });
     getSocket().on("new-post", (data) => {
-      alert("new post uploaded by other user");
       dispatch({
         type: "ADD_POST",
         post: data.post,
