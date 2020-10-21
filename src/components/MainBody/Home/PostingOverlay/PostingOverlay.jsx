@@ -48,7 +48,10 @@ function PostingOverlay({ overlayShowStatusHandler }) {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((result) => overlayShowStatusHandler())
+      .then((result) => {
+        console.log(result);
+        overlayShowStatusHandler();
+      })
       .catch((e) => console.log(e));
   };
   return (

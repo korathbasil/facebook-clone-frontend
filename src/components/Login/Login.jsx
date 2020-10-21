@@ -80,10 +80,12 @@ function Login() {
           getSocket().emit("login", { userId: res.data.id });
           setLoginEmail("");
           setLoginPassword("");
-          history.push("/");
+          Redirect("/");
         }
       })
-      .catch((e) => {});
+      .catch((e) => {
+        alert(e);
+      });
   };
   const userSignup = async (e) => {
     e.preventDefault();

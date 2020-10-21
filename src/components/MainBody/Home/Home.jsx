@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContactsList from "../../ContactsList/ContactsList";
+import getSocket from "../../../socket";
 import Feed from "./Feed/Feed";
 import Sidebar from "../../Sidebar/Sidebar";
 import Header from "../../Header/Header";
@@ -13,6 +14,7 @@ function Home() {
       ? setOverlayShowStatus(false)
       : setOverlayShowStatus(true);
   };
+
   return (
     <div className="home">
       <Header variant="shrinked" />

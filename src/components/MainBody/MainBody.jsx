@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./MainBody.css";
-import openSocket from "socket.io-client";
+import getSocket from "../../socket";
 import Home from "./Home/Home";
 import Watch from "./Watch/Watch";
 import Friends from "./Friends/Friends";
@@ -12,6 +12,20 @@ import useStateContext from "../../context/DataLayer";
 
 function MainBody() {
   const [{ chatBoxOpen }, dispatch] = useStateContext();
+
+  useEffect(() => {
+    getSocket().on("new-user-login", (data) => {
+      getSocket().emit("join-to-new-user", data);
+    });
+    getSocket().on("new-post", (data) => {
+      alert("new post uploaded by other user");
+      dispatch({
+        type: "ADD_POST",
+        post: data.post,
+      });
+    });
+  }, []);
+
   return (
     <div className="mainBody">
       <Switch>

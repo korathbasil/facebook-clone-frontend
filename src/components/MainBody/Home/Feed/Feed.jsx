@@ -7,8 +7,7 @@ import Axios from "axios";
 import useStateContext from "../../../../context/DataLayer";
 
 function Feed({ overlayShowStatusHandler }) {
-  const [{ token }, dispatch] = useStateContext();
-  const [posts, setPosts] = useState([]);
+  const [{ token, posts }, dispatch] = useStateContext();
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -20,9 +19,10 @@ function Feed({ overlayShowStatusHandler }) {
         cancelToken: source.token,
       })
       .then((result) => {
-        // console.log(result);
-        setPosts(result.data);
-        // console.log(posts);
+        dispatch({
+          type: "SET_POSTS",
+          posts: result.data,
+        });
       })
       .catch((e) => console.log(e));
     return () => {
@@ -33,7 +33,7 @@ function Feed({ overlayShowStatusHandler }) {
   return (
     <div className="feed">
       <Upload overlayShowStatusHandler={overlayShowStatusHandler} />
-      {posts.map((post) => {
+      {posts?.map((post) => {
         return (
           <Post
             id={post._id}
