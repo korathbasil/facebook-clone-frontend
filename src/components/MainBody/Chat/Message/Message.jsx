@@ -3,15 +3,12 @@ import "./Message.css";
 // Material UI imports
 import Avatar from "@material-ui/core/Avatar";
 
-function Message({}) {
+function Message({ text, self }) {
   return (
     <div className="message">
-      <div className="message__others">
-        <Avatar style={{ fontSize: 30 }} />
-        <p>hellloooo guys</p>
-      </div>
-      <div className="message__own">
-        <p>How atre you</p>
+      <div className={`${self ? "message__own" : "message__others"}`}>
+        {!self && <Avatar style={{ fontSize: 30 }} />}
+        <p>{text}</p>
       </div>
     </div>
   );

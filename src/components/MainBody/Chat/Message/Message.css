@@ -1,15 +1,20 @@
 .message {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
 }
 .message__others {
   display: flex;
   align-items: center;
+  margin: 1px 0;
+}
+.message__own {
+  margin: 1px 0;
+  margin-left: auto;
 }
 .message__others > p {
   padding: 10px;
   margin-left: 5px;
-  border-radius: 20px;
+  border-radius: 15px;
   background-color: var(--fbbg);
 }
 .message__own > p {

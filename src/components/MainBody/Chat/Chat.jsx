@@ -36,20 +36,13 @@ function Chat() {
         </div>
       </div>
       <div className="chat__body">
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-
-        <Message />
-        <Message />
-        <Message />
+        <Message text="Heloooo" self={true} />
+        <Message text="Heloooo" self={true} />
+        <Message text="Heloooo" self={false} />
+        <Message text="Heloooo" self={true} />
+        <Message text="Heloooo" self={false} />
+        <Message text="Heloooo" self={true} />
+        <Message text="Heloooo" self={true} />
       </div>
       <div className="chat__foot">
         <ImageIcon />
