@@ -7,3 +7,9 @@
 .feed::-webkit-scrollbar {
   display: none;
 }
+.feed__stories {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 123px);
+  grid-gap: 7px;
+}

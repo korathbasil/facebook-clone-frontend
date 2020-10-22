@@ -1,0 +1,23 @@
+.storyCard {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 123px;
+  height: 220px;
+  background-color: lightsalmon;
+  position: relative;
+}
+.storyCard__avatar {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.storyCard > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.storyCard > p {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
