@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ContactsList.css";
 import useStateContext from "../../context/DataLayer";
+import axios from "../../axios";
+import Axios from "axios";
 // Material UI Elements
 import VideoCallIcon from "@material-ui/icons/VideoCall";
 import SearchIcon from "@material-ui/icons/Search";
@@ -9,6 +11,10 @@ import ContactsListItem from "./ContactsListItem/ContactsListItem";
 
 function ContactsList() {
   const [{ user }, dispatch] = useStateContext();
+  // useEffect(() => {
+  //   let source = Axios.CancelToken.source();
+  //   axios.post()
+  // }, []);
   console.log(user);
   return (
     <div className="contactsList">

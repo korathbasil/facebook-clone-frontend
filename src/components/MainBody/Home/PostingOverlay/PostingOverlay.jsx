@@ -49,7 +49,7 @@ function PostingOverlay({ overlayShowStatusHandler }) {
         },
       })
       .then((result) => {
-        console.log(result);
+        alert("uploaded");
         overlayShowStatusHandler();
       })
       .catch((e) => console.log(e));

@@ -1,6 +1,7 @@
 export const initialState = {
   user: null,
   posts: [],
+  friends: [],
   selectedUser: null,
   token: null,
   isLoading: true,
