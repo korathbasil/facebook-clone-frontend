@@ -6,18 +6,30 @@
   background-color: lightsalmon;
   position: relative;
 }
+.storyCard:hover > img {
+  transform: scale(1.05);
+}
 .storyCard__avatar {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 7px;
+  left: 7px;
+  border-radius: 999px;
+  border: 4px solid var(--fbblue);
+  z-index: 1;
+  cursor: pointer;
 }
 .storyCard > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.2s ease-in;
+  cursor: pointer;
 }
 .storyCard > p {
   position: absolute;
-  bottom: 5px;
-  left: 5px;
+  bottom: 7px;
+  left: 7px;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
 }
