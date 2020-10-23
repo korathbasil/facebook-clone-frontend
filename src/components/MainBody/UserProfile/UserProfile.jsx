@@ -10,6 +10,10 @@ function UserProfile(props) {
   const [{ selectedUser, user }, dispatch] = useStateContext();
 
   useEffect(() => {
+    dispatch({
+      type: "SET_SELECTED_USER",
+      user: null,
+    });
     let source = Axios.CancelToken.source();
     axios
       .post("/user/getUser", {
@@ -22,13 +26,15 @@ function UserProfile(props) {
           type: "SET_SELECTED_USER",
           user: result.data,
         });
+        console.log(result.data);
+        console.log(user);
       })
       .catch((e) => console.log(e));
   }, []);
   return (
     <div className="userProfile">
       <Header />
-      <Profile ownProfile={false} />
+      {selectedUser && <Profile ownAccount={selectedUser?._id === user?.id} />}
     </div>
   );
 }
