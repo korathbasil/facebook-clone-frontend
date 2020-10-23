@@ -6,6 +6,7 @@ import Home from "./Home/Home";
 import Watch from "./Watch/Watch";
 import Friends from "./Friends/Friends";
 import MyProfile from "./MyProfile/MyProfile";
+import UserProfile from "./UserProfile/UserProfile";
 import Chat from "./Chat/Chat";
 import ChatBubble from "./Chat/ChatBubble/ChatBubble";
 import useStateContext from "../../context/DataLayer";
@@ -32,6 +33,7 @@ function MainBody() {
         <Route exact path="/watch" component={Watch} />
         <Route exact path="/friends" component={Friends} />
         <Route exact path="/profile" component={MyProfile} />
+        <Route exact path="/user/:userId" component={UserProfile} />
       </Switch>
       <div className="mainBody__chatBubblesContainer">
         <ChatBubble />

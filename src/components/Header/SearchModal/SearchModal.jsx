@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SearchModal.css";
+import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "../../../axios";
@@ -56,10 +57,12 @@ function SearchModal({ setShowSearchModalStatus }) {
       <p>Recent Searches</p>
       {searchedUsers?.map((user) => {
         return (
-          <div className="searchModal__result">
-            <Avatar />
-            <p>{user?.displayName}</p>
-          </div>
+          <Link to={`/user/${user.userId}`}>
+            <div className="searchModal__result">
+              <Avatar />
+              <p>{user?.displayName}</p>
+            </div>
+          </Link>
         );
       })}
     </div>
