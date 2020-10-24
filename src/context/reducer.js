@@ -19,6 +19,10 @@ export const reducer = (state, action) => {
         token: action.token,
         chats: action.chats,
       };
+    case "LOGOUT_USER":
+      return {
+        user: action.user,
+      };
     case "SET_TOKEN":
       return {
         ...state,

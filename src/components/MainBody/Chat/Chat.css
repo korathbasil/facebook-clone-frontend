@@ -46,7 +46,12 @@
   display: flex;
   flex-direction: column-reverse;
   padding: 10px;
+  /* padding-top: 100px; */
   overflow-y: overlay;
+}
+.chat__bodyDummy {
+  width: 100%;
+  height: 100px;
 }
 .chat__foot {
   border-top: 1px solid lightgrey;

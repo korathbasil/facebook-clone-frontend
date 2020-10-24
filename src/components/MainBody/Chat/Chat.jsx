@@ -54,6 +54,7 @@ function Chat() {
         </div>
       </div>
       <div className="chat__body">
+        {/* <div className="chat__bodyDummy"></div> */}
         {selectedChat?.messages?.map((msg) => {
           return (
             <Message
