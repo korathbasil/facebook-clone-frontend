@@ -17,7 +17,6 @@ function App() {
     let source = Axios.CancelToken.source();
     if (localStorage.getItem("token")) {
       const tokenFromStorage = localStorage.getItem("token");
-      console.log("object");
       axios
         .get("/auth/validate", {
           headers: {

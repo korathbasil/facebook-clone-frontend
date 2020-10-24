@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Chat.css";
 import useStateContext from "../../../context/DataLayer";
+import Axios from "axios";
+import axios from "../../../axios";
 
 // Material UI imports
 import Avatar from "@material-ui/core/Avatar";
@@ -11,6 +13,22 @@ import Message from "./Message/Message";
 
 function Chat() {
   const [{ chatBoxOpen, selectedChat, user }, dispatch] = useStateContext();
+  const [message, setMessage] = useState("");
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    // const source = Axios.CancelToken.source();
+    if (message != "") {
+      axios
+        .post("/chat/sendMessage", {
+          miniSenderId: user?.miniUserId,
+          chatId: selectedChat.id,
+          messageText: message,
+        })
+        .then((result) => alert(result.data))
+        .catch((e) => console.log(e));
+    }
+  };
   return (
     <div className="chat">
       <div className="chat__head">
@@ -38,14 +56,21 @@ function Chat() {
       <div className="chat__body">
         {selectedChat?.messages?.map((msg) => {
           return (
-            <Message text={msg?.messageText} self={msg.senderId === user?.id} />
+            <Message
+              text={msg?.messageText}
+              self={msg.miniSenderId === user?.miniUserId}
+            />
           );
         })}
       </div>
       <div className="chat__foot">
         <ImageIcon />
-        <form>
-          <input type="text" />
+        <form onSubmit={sendMessage}>
+          <input
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            type="text"
+          />
           <button type="submit">Send</button>
         </form>
       </div>
