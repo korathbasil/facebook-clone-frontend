@@ -30,6 +30,7 @@
   color: grey;
 }
 .searchModal__headerSearch > input {
+  width: 200px;
   border: none;
   outline: none;
   margin-left: 5px;
@@ -40,4 +41,20 @@
 .searchModal__headerSearch > input::placeholder {
   color: grey;
   font-size: 18px;
+}
+.searchModal__result {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+}
+.searchModal__result > p {
+  margin-left: 10px;
+}
+.searchModal__result:hover {
+  background-color: #f0f0f0ad;
+}
+.searchModal > p {
+  margin: 10px 0;
+  font-weight: 600;
 }

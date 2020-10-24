@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./SearchModal.css";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -12,7 +12,9 @@ function SearchModal({ setShowSearchModalStatus }) {
   const [{ token }, dispatch] = useStateContext();
   const [searchText, setSearchText] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
+  const searchInput = useRef();
   useEffect(() => {
+    searchInput.current.focus();
     const source = Axios.CancelToken.source();
     if (searchText != "") {
       axios
@@ -42,6 +44,7 @@ function SearchModal({ setShowSearchModalStatus }) {
         <div className="searchModal__headerSearch">
           <SearchIcon className="searchModal__headerSearchicon" />
           <input
+            ref={searchInput}
             type="text"
             placeholder="Search Facebook"
             value={searchText}
@@ -54,7 +57,6 @@ function SearchModal({ setShowSearchModalStatus }) {
           />
         </div>
       </div>
-      <p>Recent Searches</p>
       {searchedUsers?.map((user) => {
         return (
           <Link to={`/user/${user.userId}`}>
@@ -65,6 +67,8 @@ function SearchModal({ setShowSearchModalStatus }) {
           </Link>
         );
       })}
+      <p>Recent Searches</p>
+      <div className="searchModal__recent"></div>
     </div>
   );
 }
