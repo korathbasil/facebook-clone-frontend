@@ -3,6 +3,7 @@ import "./UserProfile.css";
 import Header from "../../Header/Header";
 import Profile from "../Profile/Profile";
 import useStateContext from "../../../context/DataLayer";
+import Loading from "../../Loadings/Loading";
 import axios from "../../../axios";
 import Axios from "axios";
 
@@ -30,11 +31,12 @@ function UserProfile(props) {
         console.log(user);
       })
       .catch((e) => console.log(e));
-  }, []);
+  }, [props.match.params.userId]);
   return (
     <div className="userProfile">
       <Header />
       {selectedUser && <Profile ownAccount={selectedUser?._id === user?.id} />}
+      {!selectedUser && <Loading />}
     </div>
   );
 }

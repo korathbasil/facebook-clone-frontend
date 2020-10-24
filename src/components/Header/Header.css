@@ -32,9 +32,16 @@
 }
 .header__leftSearchInput {
   height: 100%;
+  width: 200px;
   outline: none;
   border: none;
   background-color: #ebeaea;
+  display: flex;
+  align-items: center;
+  color: grey;
+}
+.header__leftSearchInput > p {
+  margin-left: 5px;
 }
 .header__leftSearchInput::placeholder {
   color: grey;

@@ -3,7 +3,7 @@
   overflow: hidden;
   width: 123px;
   height: 220px;
-  background-color: lightsalmon;
+  background-color: white;
   position: relative;
 }
 .storyCard:hover > img {
@@ -24,6 +24,7 @@
   object-fit: cover;
   transition: transform 0.2s ease-in;
   cursor: pointer;
+  /* z-index: -1; */
 }
 .storyCard > p {
   position: absolute;
