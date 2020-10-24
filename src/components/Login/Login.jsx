@@ -51,11 +51,6 @@ function Login() {
   const userLogin = async (e) => {
     e.preventDefault();
     setLoginLoader(true);
-    // const { error } = loginSchema.validate({
-    //   email: loginEmail,
-    //   password: loginPassword,
-    // });
-
     await axios
       .post("/auth/login", {
         email: loginEmail,

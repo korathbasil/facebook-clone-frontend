@@ -10,9 +10,11 @@ import UserProfile from "./UserProfile/UserProfile";
 import Chat from "./Chat/Chat";
 import ChatBubble from "./Chat/ChatBubble/ChatBubble";
 import useStateContext from "../../context/DataLayer";
+import axios from "../../axios";
+import Axios from "axios";
 
 function MainBody() {
-  const [{ chatBoxOpen }, dispatch] = useStateContext();
+  const [{ chatBoxOpen, user }, dispatch] = useStateContext();
 
   useEffect(() => {
     getSocket().on("new-user-login", (data) => {
@@ -24,6 +26,25 @@ function MainBody() {
         post: data.post,
       });
     });
+  }, []);
+
+  useEffect(() => {
+    const source = Axios.CancelToken.source();
+    if (user.chats.length != 0) {
+      axios
+        .post("/chat/getChats", {
+          chatIds: user?.chats,
+          userId: user?.id,
+        })
+        .then((result) => {
+          console.log(result);
+          dispatch({
+            type: "SET_CHATS",
+            chats: result.data,
+          });
+        })
+        .catch((e) => console.log(e));
+    }
   }, []);
 
   return (
