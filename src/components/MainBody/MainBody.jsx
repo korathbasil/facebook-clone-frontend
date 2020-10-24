@@ -45,6 +45,8 @@ function MainBody() {
         })
         .catch((e) => console.log(e));
     }
+
+    return () => source.cancel();
   }, []);
 
   return (

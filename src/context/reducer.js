@@ -3,6 +3,7 @@ export const initialState = {
   posts: [],
   friends: [],
   chats: [],
+  selectedChat: null,
   selectedUser: null,
   token: null,
   isLoading: true,
@@ -43,6 +44,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         chats: action.chats,
+      };
+    case "SET_SELECTED_CHAT":
+      return {
+        ...state,
+        selectedChat: action.chat,
       };
     case "SET_SELECTED_USER":
       return {

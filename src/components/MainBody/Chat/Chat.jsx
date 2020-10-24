@@ -10,13 +10,13 @@ import ImageIcon from "@material-ui/icons/Image";
 import Message from "./Message/Message";
 
 function Chat() {
-  const [{ chatBoxOpen }, dispatch] = useStateContext();
+  const [{ chatBoxOpen, selectedChat, user }, dispatch] = useStateContext();
   return (
     <div className="chat">
       <div className="chat__head">
         <div className="chat__headLeft">
-          <Avatar />
-          <p>Bazil Korath</p>
+          <Avatar src={selectedChat?.party?.profilePicture} />
+          <p>{selectedChat?.party?.displayName}</p>
         </div>
         <div className="chat__headRight">
           <div className="chat__headRightIcon">
@@ -36,13 +36,11 @@ function Chat() {
         </div>
       </div>
       <div className="chat__body">
-        <Message text="Heloooo" self={true} />
-        <Message text="Heloooo" self={true} />
-        <Message text="Heloooo" self={false} />
-        <Message text="Heloooo" self={true} />
-        <Message text="Heloooo" self={false} />
-        <Message text="Heloooo" self={true} />
-        <Message text="Heloooo" self={true} />
+        {selectedChat?.messages?.map((msg) => {
+          return (
+            <Message text={msg?.messageText} self={msg.senderId === user?.id} />
+          );
+        })}
       </div>
       <div className="chat__foot">
         <ImageIcon />
