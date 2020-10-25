@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./MyProfile.css";
 import Header from "../../Header/Header";
 import Profile from "../Profile/Profile";
+import ImageUploadModal from "../ImageUploadModal/ImageUploadModal";
 import axios from "../../../axios";
 import Axios from "axios";
 import useStateContext from "../../../context/DataLayer";
 
 function MyProfile() {
   const [{ selectedUser, user }, dispatch] = useStateContext();
+  const [showImageUploadModal, setShowImageUploadModal] = useState(true);
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -29,11 +31,15 @@ function MyProfile() {
     };
   }, []);
   return (
-    <div>
-      <Header className="myProfile" />
-      <div className="myProfile__profile">
-        <Profile ownAccount={true} />
+    <div className="myProfile">
+      <div className="myProfile__body">
+        <Header />
+        <div className="myProfile__profile">
+          <Profile ownAccount={true} />
+        </div>
       </div>
+      {/* <div className="myProfile__modal"></div> */}
+      {showImageUploadModal && <ImageUploadModal />}
     </div>
   );
 }

@@ -1,0 +1,23 @@
+.IUM {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff97;
+}
+
+.IUM__body {
+  width: 100%;
+  height: calc(100% - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.IUM__modal {
+  width: 600px;
+  height: 600px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.587);
+}
