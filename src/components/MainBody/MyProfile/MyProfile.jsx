@@ -8,8 +8,10 @@ import Axios from "axios";
 import useStateContext from "../../../context/DataLayer";
 
 function MyProfile() {
-  const [{ selectedUser, user }, dispatch] = useStateContext();
-  const [showImageUploadModal, setShowImageUploadModal] = useState(true);
+  const [
+    { selectedUser, user, imageUploadModal },
+    dispatch,
+  ] = useStateContext();
 
   useEffect(() => {
     let source = Axios.CancelToken.source();
@@ -39,7 +41,7 @@ function MyProfile() {
         </div>
       </div>
       {/* <div className="myProfile__modal"></div> */}
-      {showImageUploadModal && <ImageUploadModal />}
+      {imageUploadModal != "" && <ImageUploadModal />}
     </div>
   );
 }

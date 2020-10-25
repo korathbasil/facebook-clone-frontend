@@ -5,14 +5,24 @@ import FBLoading from "../../FBLoading/FBLoading";
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
 import Avatar from "@material-ui/core/Avatar";
+import useStateContext from "../../../context/DataLayer";
 
 function PPModal() {
   const [saveLoadingStatus, setSaveLoadingStatus] = useState(false);
+  const [{}, dispatch] = useStateContext();
   return (
     <div className="PPM">
       <div className="PPM__header">
         <h3>Upload profile Picture</h3>
-        <div className="PPM__headerIcon">
+        <div
+          onClick={() => {
+            dispatch({
+              type: "SET_IMAGE_UPLOAD_MODAL",
+              modal: "",
+            });
+          }}
+          className="PPM__headerIcon"
+        >
           <CloseIcon />
         </div>
       </div>

@@ -8,6 +8,7 @@ export const initialState = {
   token: null,
   isLoading: true,
   chatBoxOpen: false,
+  imageUploadModal: "",
 };
 
 export const reducer = (state, action) => {
@@ -63,6 +64,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         chatBoxOpen: action.open,
+      };
+    case "SET_IMAGE_UPLOAD_MODAL":
+      return {
+        ...state,
+        imageUploadModal: action.modal,
       };
   }
 };

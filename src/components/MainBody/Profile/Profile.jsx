@@ -32,7 +32,15 @@ function Profile({ ownAccount }) {
               />
             )}
             {ownAccount && (
-              <div className="profile__headerCoverButton">
+              <div
+                onClick={() => {
+                  dispatch({
+                    type: "SET_IMAGE_UPLOAD_MODAL",
+                    modal: "coverPicture",
+                  });
+                }}
+                className="profile__headerCoverButton"
+              >
                 <CameraAltIcon />
                 <p>Edit cover photo</p>
               </div>
@@ -148,7 +156,15 @@ function Profile({ ownAccount }) {
               style={{ width: 190, height: 190 }}
             />
             {ownAccount && (
-              <div className="profile__headerProfilePictureButton">
+              <div
+                onClick={() => {
+                  dispatch({
+                    type: "SET_IMAGE_UPLOAD_MODAL",
+                    modal: "profilePicture",
+                  });
+                }}
+                className="profile__headerProfilePictureButton"
+              >
                 <CameraAltIcon />
               </div>
             )}
