@@ -9,7 +9,9 @@ function ImageUploadModal() {
     <div className="IUM">
       <Header />
       <div className="IUM__body">
-        <div className="IUM__modal">Heloooo</div>
+        <div className="IUM__modal">
+          <PPModal />
+        </div>
       </div>
     </div>
   );

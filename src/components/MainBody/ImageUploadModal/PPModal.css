@@ -1,0 +1,76 @@
+.PPM {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.PPM__header {
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  border-bottom: 1px solid lightgrey;
+}
+.PPM__header > h3 {
+  position: absolute;
+  font-weight: 500;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.PPM__headerIcon {
+  display: flex;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  background-color: var(--fbbg);
+  cursor: pointer;
+}
+.PPM__body {
+  width: 100%;
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.PPM__imageSelectButton {
+  padding: 7px;
+  width: 100%;
+  background-color: #dcf3ff;
+  color: var(--fbblue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.PPM__imageSelectButton > h4 {
+  margin-left: 10px;
+}
+.PPM__previewContainer {
+  flex: 1;
+  /* background-color: violet; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.PPM__body > form > button,
+input {
+  display: none;
+}
+.PPM__formButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  background-color: var(--fbblue);
+  border-radius: 10px;
+}
+.PPM__formButton > p {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
