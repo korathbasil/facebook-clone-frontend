@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./PPModal.css";
 import FBLoading from "../../FBLoading/FBLoading";
+import Axios from "axios";
+import axios from "../../../axios";
 // Mterial UI elements
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
@@ -9,11 +11,12 @@ import useStateContext from "../../../context/DataLayer";
 
 function PPModal() {
   const [saveLoadingStatus, setSaveLoadingStatus] = useState(false);
-  const [{}, dispatch] = useStateContext();
+  const [{ user }, dispatch] = useStateContext();
   const fileInput = useRef();
   const formButton = useRef();
   const [image, setImage] = useState(null);
   const [imagePath, setImagePath] = useState(null);
+  let formData = new FormData();
 
   const selectFile = (e) => {
     e.preventDefault();
@@ -21,6 +24,24 @@ function PPModal() {
       setImagePath(URL.createObjectURL(e.target.files[0]));
       setImage(e.target.files[0]);
     }
+  };
+
+  const uploadProfilePicture = (e) => {
+    e.preventDefault();
+    formData.append("image", image);
+    formData.append("folder", "profilePictures");
+    formData.append("userId", user?.id);
+    formData.append("miniUserId", user?.miniUserId);
+    axios
+      .post("user/profilePicture", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((result) => {
+        alert("uploaded");
+      })
+      .catch((e) => console.log(e));
   };
   return (
     <div className="PPM">
@@ -51,7 +72,7 @@ function PPModal() {
         <div className="PPM__previewContainer">
           <Avatar src={imagePath} style={{ width: 300, height: 300 }} />
         </div>
-        <form action="">
+        <form onSubmit={uploadProfilePicture}>
           <input
             ref={fileInput}
             type="file"

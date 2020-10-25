@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./CPModal.css";
 import FBLoading from "../../FBLoading/FBLoading";
+import axios from "../../../axios";
 // Mterial UI elements
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
@@ -8,11 +9,12 @@ import useStateContext from "../../../context/DataLayer";
 
 function CPModal() {
   const [saveLoadingStatus, setSaveLoadingStatus] = useState(false);
-  const [{}, dispatch] = useStateContext();
+  const [{ user }, dispatch] = useStateContext();
   const fileInput = useRef();
   const formButton = useRef();
   const [image, setImage] = useState(null);
   const [imagePath, setImagePath] = useState(null);
+  let formData = new FormData();
 
   const selectFile = (e) => {
     e.preventDefault();
@@ -20,6 +22,23 @@ function CPModal() {
       setImagePath(URL.createObjectURL(e.target.files[0]));
       setImage(e.target.files[0]);
     }
+  };
+  const uploadcoverPicture = (e) => {
+    e.preventDefault();
+    formData.append("image", image);
+    formData.append("folder", "coverPictures");
+    formData.append("userId", user?.id);
+    formData.append("miniUserId", user?.miniUserId);
+    axios
+      .post("user/coverPicture", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((result) => {
+        alert("uploaded");
+      })
+      .catch((e) => console.log(e));
   };
   return (
     <div className="CPM">
@@ -52,7 +71,7 @@ function CPModal() {
             {imagePath != null && <img src={imagePath} alt="" />}
           </div>
         </div>
-        <form action="">
+        <form onSubmit={uploadcoverPicture}>
           <input
             ref={fileInput}
             type="file"

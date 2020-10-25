@@ -80,6 +80,7 @@ input {
   width: 100%;
   background-color: var(--fbblue);
   border-radius: 10px;
+  cursor: pointer;
 }
 .CPM__formButton > p {
   color: white;
