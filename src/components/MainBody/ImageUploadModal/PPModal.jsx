@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./PPModal.css";
 import FBLoading from "../../FBLoading/FBLoading";
 // Mterial UI elements
@@ -10,6 +10,18 @@ import useStateContext from "../../../context/DataLayer";
 function PPModal() {
   const [saveLoadingStatus, setSaveLoadingStatus] = useState(false);
   const [{}, dispatch] = useStateContext();
+  const fileInput = useRef();
+  const formButton = useRef();
+  const [image, setImage] = useState(null);
+  const [imagePath, setImagePath] = useState(null);
+
+  const selectFile = (e) => {
+    e.preventDefault();
+    if (e.target.files[0]) {
+      setImagePath(URL.createObjectURL(e.target.files[0]));
+      setImage(e.target.files[0]);
+    }
+  };
   return (
     <div className="PPM">
       <div className="PPM__header">
@@ -27,17 +39,32 @@ function PPModal() {
         </div>
       </div>
       <div className="PPM__body">
-        <div className="PPM__imageSelectButton">
+        <div
+          onClick={() => {
+            fileInput.current.click();
+          }}
+          className="PPM__imageSelectButton"
+        >
           <AddIcon />
           <h4>Upload photo</h4>
         </div>
         <div className="PPM__previewContainer">
-          <Avatar style={{ width: 300, height: 300 }} />
+          <Avatar src={imagePath} style={{ width: 300, height: 300 }} />
         </div>
         <form action="">
-          <input type="file" name="" id="" />
-          <button>Upload</button>
-          <div className="PPM__formButton">
+          <input
+            ref={fileInput}
+            type="file"
+            onChange={selectFile}
+            encType="multipart/form-data"
+          />
+          <button ref={formButton}>Upload</button>
+          <div
+            onClick={() => {
+              formButton.current.click();
+            }}
+            className="PPM__formButton"
+          >
             {saveLoadingStatus && <FBLoading col="white" len="30px" />}
             <p>Save</p>
           </div>
