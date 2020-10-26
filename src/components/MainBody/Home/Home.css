@@ -4,8 +4,16 @@
 }
 .home__bottom {
   width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
   height: calc(100vh - 60px);
   background-color: #ebeaea;
   display: flex;
   justify-content: space-between;
+}
+
+@media (min-width: 1800px) {
+  .home__bottom {
+    width: 1400px;
+  }
 }
