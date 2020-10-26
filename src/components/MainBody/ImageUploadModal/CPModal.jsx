@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./CPModal.css";
 import FBLoading from "../../FBLoading/FBLoading";
 import axios from "../../../axios";
@@ -13,9 +13,11 @@ function CPModal() {
   const fileInput = useRef();
   const formButton = useRef();
   const [image, setImage] = useState(null);
-  const [imagePath, setImagePath] = useState(null);
+  const [imagePath, setImagePath] = useState("");
   let formData = new FormData();
-
+  //   useEffect(() => {
+  //     setImagePath(user?.coverPicture?.coverPictureUrl);
+  //   }, []);
   const selectFile = (e) => {
     e.preventDefault();
     if (e.target.files[0]) {
@@ -68,17 +70,20 @@ function CPModal() {
         </div>
         <div className="CPM__previewContainer">
           <div className="CPM__previewImage">
-            {imagePath != null && <img src={imagePath} alt="" />}
+            {imagePath != "" && <img src={imagePath} alt="" />}
           </div>
         </div>
         <form onSubmit={uploadcoverPicture}>
           <input
+            className="CPM__fileInput"
             ref={fileInput}
             type="file"
             onChange={selectFile}
             encType="multipart/form-data"
           />
-          <button ref={formButton}>Upload</button>
+          <button className="CPM_formHiddenButton" ref={formButton}>
+            Upload
+          </button>
           <div
             onClick={() => {
               formButton.current.click();

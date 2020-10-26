@@ -1,5 +1,7 @@
 .profile {
   width: 100%;
+  height: calc(100vh - 45px);
+  overflow: scroll;
 }
 .profile__header {
   width: 100%;

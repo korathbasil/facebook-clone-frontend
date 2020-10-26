@@ -55,8 +55,8 @@
   align-items: center;
   justify-content: center;
 }
-.PPM__body > form > button,
-input {
+.PPM_fileInput,
+.PPM_formHiddenButton {
   display: none;
 }
 .PPM__formButton {

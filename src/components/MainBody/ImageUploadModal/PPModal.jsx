@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./PPModal.css";
 import FBLoading from "../../FBLoading/FBLoading";
 import Axios from "axios";
@@ -15,9 +15,12 @@ function PPModal() {
   const fileInput = useRef();
   const formButton = useRef();
   const [image, setImage] = useState(null);
-  const [imagePath, setImagePath] = useState(null);
+  const [imagePath, setImagePath] = useState("");
   let formData = new FormData();
 
+  //   useEffect(() => {
+  //     setImagePath(user?.coverPicture?.coverPictureUrl);
+  //   }, []);
   const selectFile = (e) => {
     e.preventDefault();
     if (e.target.files[0]) {
@@ -74,12 +77,15 @@ function PPModal() {
         </div>
         <form onSubmit={uploadProfilePicture}>
           <input
+            className="PPM_fileInput"
             ref={fileInput}
             type="file"
             onChange={selectFile}
             encType="multipart/form-data"
           />
-          <button ref={formButton}>Upload</button>
+          <button className="PPM_formHiddenButton" ref={formButton}>
+            Upload
+          </button>
           <div
             onClick={() => {
               formButton.current.click();
