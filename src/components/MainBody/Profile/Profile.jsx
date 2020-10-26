@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "./Profile.css";
 import Timeline from "./Timeline/Timeline";
+import About from "./About/About";
+import Photos from "./Photos/Photos";
 import ProfileFriends from "./ProfileFriends/ProfileFriends";
 import useStateContext from "../../../context/DataLayer";
 import FriendCard from "./FriendCard/FriendCard";
@@ -173,7 +175,9 @@ function Profile({ ownAccount }) {
       </div>
       <div className="profile__bottomBody">
         {activeTab === "timeline" && <Timeline ownAccount={ownAccount} />}
+        {activeTab === "about" && <About />}
         {activeTab === "friends" && <ProfileFriends />}
+        {activeTab === "photos" && <Photos />}
       </div>
     </div>
   );
